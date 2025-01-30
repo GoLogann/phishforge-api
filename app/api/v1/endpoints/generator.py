@@ -1,5 +1,10 @@
+import json
+
 from fastapi import APIRouter, HTTPException, Depends
+
 from app.domain.services.embedding_service import EmbeddingService
+from app.domain.services.response_generator import ResponseGenerator
+from app.domain.models.phishing_email import PhishingEmail
 from app.dto.query import QueryRequest
 from app.infrastructure.qdrant.store import QdrantVectorStore
 from app.infrastructure.sentence_transformers.embedding_client import SentenceTransformersEmbeddingClient
@@ -14,18 +19,31 @@ def get_qdrant_vector_store() -> QdrantVectorStore:
     vector_store = QdrantVectorStore()
     return vector_store
 
+def get_response_generator() -> ResponseGenerator:
+    return ResponseGenerator()
+
 @app.post("/api/v1/generate")
 async def generate(
         request: QueryRequest,
-        embedding_service: EmbeddingService = Depends(get_embedding_service),
-        vector_store: QdrantVectorStore = Depends(get_qdrant_vector_store),
+        response_generator: ResponseGenerator = Depends(get_response_generator)
 ):
     try:
-        query_embedding = embedding_service.embedding_client.embed("Hello, world!")
+        phishing_example = await response_generator.generate_response(
+            difficulty="dificil",
+            context=request.context
+        )
 
-        vector_store.save(collection_name="testando_novo_repositorio", chunks=["Hello, world!"], chunk_embeddings=query_embedding)
+        if phishing_example and isinstance(phishing_example, str):
+            try:
+                phishing_example_json = json.loads(phishing_example)
 
-        return {"query_embedding": query_embedding}
+                phishing_email = PhishingEmail(**phishing_example_json)
+
+                return phishing_email
+            except json.JSONDecodeError as e:
+                raise HTTPException(status_code=500, detail=f"JSON parsing error: {str(e)}")
+        else:
+            raise HTTPException(status_code=500, detail="Generated phishing example is empty or not a valid string.")
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
