@@ -15,7 +15,7 @@ PhishForge é uma ferramenta educacional que gera exemplos de e-mails de phishin
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/phishforge.git
+   git clone https://github.com/GoLogann/phishforge.git
    cd phishforge
    ```
 
