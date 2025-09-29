@@ -1,0 +1,65 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtualenv
+.venv/
+venv/
+env/
+ENV/
+
+# Testes e ferramentas
+.pytest_cache/
+.coverage
+.tox/
+.hypothesis/
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Logs e temporários
+*.log
+*.tmp
+*.pid
+*.seed
+*.bak
+
+# Docker
+.dockerignore
+Dockerfile*
+docker-compose*.yml
+
+# Git / CI
+.git/
+.gitignore
+.gitattributes
+.github/
+.gitlab/
+.gitlab-ci.yml
+
+# IDE / SO
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Configurações locais / segredos
+*.env
+.env.*
+!example.env
+*.secret
+*.key
+*.pem
+*.crt
+
+# Pacotes / build
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+*.whl

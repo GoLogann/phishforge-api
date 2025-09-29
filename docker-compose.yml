@@ -1,11 +1,33 @@
-version: '3.9'
-
 services:
-  qdrant:
+  phishforge-postgresql:
+    image: postgres:16.4
+    container_name: phishforge-postgresql
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: phishforge
+      POSTGRES_USER: phishforge
+      POSTGRES_PASSWORD: phishforge
+      POSTGRES_HOST_AUTH_METHOD: md5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - phishforge_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U phishforge -d phishforge"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  phishforge-qdrant:
     image: qdrant/qdrant:latest
-    container_name: qdrant-service
+    container_name: phishforge-qdrant
+    restart: unless-stopped
     ports:
       - "6333:6333"
+      - "6334:6334"
     volumes:
       - qdrant_data:/qdrant/storage
     environment:
@@ -14,7 +36,30 @@ services:
     networks:
       - phishforge_network
 
+  phishforge-flyway:
+    image: flyway/flyway:7.0.2
+    container_name: phishforge-flyway
+    command: >
+      -configFiles=/flyway/conf/flyway.config
+      -locations=filesystem:/flyway/sql
+      -connectRetries=60
+      migrate
+    volumes:
+      - ./migrate/changelogs:/flyway/sql
+      - ./migrate/flyway.config:/flyway/conf/flyway.config
+    networks:
+      - phishforge_network
+    depends_on:
+      phishforge-postgresql:
+        condition: service_healthy
+
 networks:
   phishforge_network:
     name: phishforge_network
     driver: bridge
+
+volumes:
+  postgres_data:
+    name: phishforge_postgres_data
+  qdrant_data:
+    name: phishforge_qdrant_data
