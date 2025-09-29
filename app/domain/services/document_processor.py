@@ -1,66 +1,68 @@
+# app/domain/services/document_processor.py
+
 import os
 import re
-import traceback
 import unicodedata
-
+from typing import List, Dict
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import PyPDFLoader, UnstructuredWordDocumentLoader
-
-from app.core.config import settings
-
+from langchain.docstore.document import Document
 
 class DocumentProcessor:
-    def __init__(self, chunk_size=settings.CHUNK_SIZE, chunk_overlap=settings.CHUNK_OVERLAP):
+    def __init__(self, chunk_size: int = 350, chunk_overlap: int = 50):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
+        self.splitter = RecursiveCharacterTextSplitter(
+            chunk_size=self.chunk_size,
+            chunk_overlap=self.chunk_overlap
+        )
 
-    def process_document_data(self, document_data):
-        """
-        Processa o texto de um documento (PDF ou DOCX) e divide em chunks.
-
-        :param document_data: Texto do documento
-        :return: Lista de chunks
-        """
-        chunks = []
-        try:
-            splitter = RecursiveCharacterTextSplitter(
-                chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap
-            )
-
-            chunks = splitter.split_text(document_data)
-
-        except Exception as e:
-            print(f"Erro ao processar documento: {e}")
-            print(traceback.format_exc())
-
-        return chunks
-
-    def preprocess_file_rag(self, file_path):
-        ext = os.path.splitext(file_path)[1].lower()
-        try:
-            if ext == '.pdf':
-                loader = PyPDFLoader(file_path)
-            elif ext == '.docx':
-                loader = UnstructuredWordDocumentLoader(file_path)
-            else:
-                raise ValueError(f"Formato de arquivo {ext} não suportado.")
-
-            documents = loader.load()
-            text = " ".join(doc.page_content for doc in documents)
-
-            text = self.preprocess_text(text)
-            return text
-
-        except Exception as e:
-            print(f"Erro ao processar o arquivo {file_path}: {str(e)}")
-            raise
-
-    @staticmethod
-    def preprocess_text(text):
+    def preprocess_text(self, text: str) -> str:
+        """Limpa e normaliza o texto."""
         text = text.lower()
         text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8')
-        text = re.sub(r'[^\w\s.,!?]', ' ', text)
-        text = " ".join(text.split())
+        text = re.sub(r'[^\w\s.,!?-]', ' ', text)
+        return " ".join(text.split())
 
-        return text
+    def process_file(self, file_path: str) -> List[Dict]:
+        """
+        Método principal que carrega e divide um arquivo em chunks com base na sua extensão.
+        """
+        file_extension = os.path.splitext(file_path)[1].lower()
+        
+        if file_extension == ".pdf":
+            loader = PyPDFLoader(file_path)
+        elif file_extension in [".md", ".txt"]:
+            loader = TextLoader(file_path, encoding='utf-8')
+        else:
+            print(f"⚠️  Tipo de arquivo não suportado: {file_extension}. Pulando.")
+            return []
+            
+        documents = loader.load()
+        return self._create_small_to_big_chunks(documents, file_path)
 
+    def _create_small_to_big_chunks(self, documents: List[Document], file_path: str) -> List[Dict]:
+        """
+        Processa uma lista de documentos carregados e os divide em chunks "Small-to-Big".
+        """
+        chunks_with_metadata = []
+        file_name = os.path.basename(file_path)
+
+        for doc in documents:
+            parent_content = self.preprocess_text(doc.page_content)
+            child_chunks = self.splitter.split_text(parent_content)
+            
+            # Para PDFs, doc.metadata['page'] existe. Para .md/.txt, definimos como 1.
+            page_number = doc.metadata.get("page", 0) + 1
+
+            for idx, child_chunk in enumerate(child_chunks):
+                chunks_with_metadata.append({
+                    "child_text": child_chunk,       # O texto "filho" a ser embedado
+                    "parent_text": parent_content,   # O texto "pai" para o contexto
+                    "metadata": {
+                        "source": file_name,
+                        "page": page_number,
+                        "chunk_id": f"page_{page_number}_chunk_{idx}"
+                    }
+                })
+        return chunks_with_metadata

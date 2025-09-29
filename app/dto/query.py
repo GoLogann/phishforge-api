@@ -1,10 +1,8 @@
-from typing import Optional
-
 from pydantic import BaseModel
 
 class QueryRequest(BaseModel):
-    difficulty: Optional[int]
-    context: Optional[str]
+    difficulty: str
+    user_context: str
 
     class Config:
         populate_by_name = True
@@ -12,6 +10,9 @@ class QueryRequest(BaseModel):
 
 class QueryResponse(BaseModel):
     text: str
+    score: float | None = None
+    id: str | None = None
+    payload: dict | None = None
 
 class RepoRequest(BaseModel):
     url: str

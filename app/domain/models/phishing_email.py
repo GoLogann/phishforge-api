@@ -1,10 +1,12 @@
-class PhishingEmail:
-    def __init__(self, receptor: str, remetente: str, assunto: str, conteudo: str, links: list):
-        self.receptor = receptor
-        self.remetente = remetente
-        self.assunto = assunto
-        self.conteudo = conteudo
-        self.links = links
+from pydantic import BaseModel
+from typing import List
 
-    def __repr__(self):
-        return f"PhishingEmail(receptor={self.receptor}, remetente={self.remetente}, assunto={self.assunto}, conteudo={self.conteudo}, links={self.links})"
+class PhishingEmail(BaseModel):
+    receptor: str
+    remetente: str
+    assunto: str
+    conteudo: str
+    explicacao: str
+    nivel: str
+    categoria: str
+    links: List[str]
