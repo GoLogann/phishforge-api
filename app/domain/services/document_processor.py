@@ -1,5 +1,3 @@
-# app/domain/services/document_processor.py
-
 import os
 import re
 import unicodedata

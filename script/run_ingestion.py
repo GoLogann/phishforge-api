@@ -16,7 +16,7 @@ ARTICLES_DIR = os.path.join(PROJECT_ROOT, "data", "articles")
 
 # Constantes de configuração
 COLLECTION_NAME = "phishing_articles"
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
 
 
