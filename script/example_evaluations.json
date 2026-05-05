@@ -1,0 +1,33 @@
+{
+  "description": "Exemplo de arquivo de avaliações em lote para o script evaluate_ragas.py",
+  "created_at": "2025-11-06T12:00:00Z",
+  "evaluations": [
+    {
+      "email_id": "123e4567-e89b-12d3-a456-426614174000",
+      "user_context": "Gere um email de phishing simulando uma mensagem de um banco solicitando atualização de dados",
+      "search_query": "phishing bancário atualização dados credenciais",
+      "generation_context": "email phishing banco falso solicitar dados pessoais urgente",
+      "difficulty": "medio",
+      "hyde_context": "Um email de phishing típico de instituição bancária incluiria elementos como urgência, solicitação de dados pessoais, links suspeitos e logos falsificados para enganar a vítima.",
+      "fused_context": "Técnicas de phishing bancário incluem: uso de logos oficiais falsificados, criação de senso de urgência (conta será bloqueada), solicitação de dados confidenciais via email, links para sites falsos que imitam o banco real, e uso de linguagem formal para parecer legítimo."
+    },
+    {
+      "email_id": "234e4567-e89b-12d3-a456-426614174001", 
+      "user_context": "Crie um phishing de e-commerce fingindo ser uma promoção imperdível",
+      "search_query": "phishing e-commerce promoção falsa desconto",
+      "generation_context": "email phishing loja online promoção fake oferta limitada",
+      "difficulty": "baixo",
+      "hyde_context": "Emails de phishing de e-commerce geralmente oferecem descontos irreais, produtos gratuitos ou promoções por tempo limitado para atrair vítimas.",
+      "fused_context": "Táticas comuns em phishing de e-commerce: ofertas impossíveis (90% de desconto), produtos gratuitos como isca, pressão temporal (oferta expira em 1 hora), links para sites falsos que coletam dados de cartão, uso de marcas conhecidas falsificadas."
+    },
+    {
+      "email_id": "345e4567-e89b-12d3-a456-426614174002",
+      "user_context": "Desenvolva um phishing avançado simulando notificação de segurança",
+      "search_query": "phishing segurança notificação breach violação",
+      "generation_context": "email phishing sofisticado alerta segurança falso breach",
+      "difficulty": "alto",
+      "hyde_context": "Phishing de segurança avançado usa linguagem técnica precisa, referências a vulnerabilidades reais, e simula alertas legítimos de segurança para parecer autêntico.",
+      "fused_context": "Phishing avançado de segurança: terminologia técnica correta, referências a CVEs reais, simulação de alertas de breach legítimos, uso de formatação similar a relatórios oficiais, solicitação de 'verificação de segurança' que na verdade coleta credenciais."
+    }
+  ]
+}

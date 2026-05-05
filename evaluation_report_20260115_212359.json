@@ -1,0 +1,150 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-15T21:23:59.187349",
+    "models_tested": [
+      "gpt-3.5-turbo",
+      "gpt-4",
+      "gpt-4o-mini"
+    ],
+    "difficulties": [
+      "fácil",
+      "médio",
+      "difícil"
+    ],
+    "total_evaluations": 9
+  },
+  "summary_by_model": {
+    "gpt-3.5-turbo": {
+      "avg_context_relevance": 1.0,
+      "avg_faithfulness": 0.0,
+      "avg_response_relevancy": 0.0,
+      "avg_execution_time": 54.727712,
+      "sample_count": 1
+    }
+  },
+  "summary_by_difficulty": {
+    "fácil": {
+      "avg_context_relevance": 1.0,
+      "avg_faithfulness": 0.0,
+      "avg_response_relevancy": 0.0,
+      "avg_execution_time": 54.727712,
+      "sample_count": 1
+    }
+  },
+  "detailed_results": [
+    {
+      "model": "gpt-3.5-turbo",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "Simple phishing email template pretending to be from a generic bank asking the user to update their personal information.",
+      "generation_context": "The scenario is creating a simple phishing email pretending to be from a generic bank asking the user to update their personal information. The email should contain obvious errors and be easily identifiable as fraudulent.",
+      "generated_email": {
+        "receptor": "usuario@exemplo.com",
+        "remetente": "noreply@genericbank.com",
+        "assunto": "Atualização Urgente de Informações Pessoais",
+        "conteudo": "Prezado cliente, \n\nNós do Generic Bank estamos solicitando que você atualize suas informações pessoais imediatamente. Por favor, clique no link abaixo e preencha os campos com seus dados atualizados. \n\nLink para atualização: [Clique Aqui](http://phishingsite.com) \n\nCaso você não atualize suas informações, sua conta poderá ser bloqueada. \n\nAtenciosamente, \nGeneric Bank",
+        "explicacao": "Este email de phishing simula ser do Generic Bank, com um remetente genérico 'noreply@genericbank.com' e um assunto com urgência exagerada. O conteúdo contém erros ortográficos e solicita informações sensíveis por meio de um link suspeito.",
+        "nivel": "fácil",
+        "categoria": "genérico",
+        "links": [
+          "http://phishingsite.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.0
+      },
+      "execution_time": 54.727712,
+      "error": null
+    },
+    {
+      "model": "gpt-3.5-turbo",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 12.07534,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 16385 tokens. However, your messages resulted in 22020 tokens (21954 in the messages, 66 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "model": "gpt-3.5-turbo",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 4.05013,
+      "error": "[Errno 32] Broken pipe"
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 23.182072,
+      "error": "[Errno 32] Broken pipe"
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 24.566153,
+      "error": "[Errno 32] Broken pipe"
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 20.677524,
+      "error": "[Errno 32] Broken pipe"
+    },
+    {
+      "model": "gpt-4o-mini",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 19.157112,
+      "error": "[Errno 32] Broken pipe"
+    },
+    {
+      "model": "gpt-4o-mini",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 14.955682,
+      "error": "[Errno 32] Broken pipe"
+    },
+    {
+      "model": "gpt-4o-mini",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 17.246519,
+      "error": "[Errno 32] Broken pipe"
+    }
+  ]
+}

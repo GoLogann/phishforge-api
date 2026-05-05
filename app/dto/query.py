@@ -12,7 +12,7 @@ class QueryResponse(BaseModel):
     text: str
     score: float | None = None
     id: str | None = None
-    payload: dict | None = None
+    payload: dict | None = None # type: ignore
 
 class RepoRequest(BaseModel):
     url: str

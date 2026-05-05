@@ -1,5 +1,8 @@
-import asyncpg
 from contextlib import asynccontextmanager
+
+import asyncpg
+
+from app.core.config import settings
 
 
 class DatabaseConnection:
@@ -33,3 +36,22 @@ class DatabaseConnection:
         pool = await self.create_pool()
         async with pool.acquire() as connection:
             yield connection
+
+    @property
+    def pool(self):
+        return self._pool
+
+
+async def get_db_pool():
+    """Função utilitária para criar um pool de conexões com o banco."""
+    return await asyncpg.create_pool(
+        host=settings.DB_HOST,
+        port=settings.DB_PORT,
+        user=settings.DB_USER,
+        password=settings.DB_PASSWORD,
+        database=settings.DB_NAME,
+        min_size=1,
+        max_size=10,
+        command_timeout=60
+    )
+

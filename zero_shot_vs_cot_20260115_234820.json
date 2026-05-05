@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-15T23:48:20.034102",
+    "model": "gpt-4",
+    "experiment": "Zero-Shot vs Chain-of-Thought",
+    "total_evaluations": 6
+  },
+  "summary_by_prompt_type": {
+    "zero-shot": {
+      "avg_context_relevance": 1.0,
+      "avg_faithfulness": 0.1368421052631579,
+      "avg_response_relevancy": 0.35997897593852185,
+      "avg_execution_time": 82.04275633333333,
+      "sample_count": 3
+    },
+    "chain-of-thought": {
+      "avg_context_relevance": 1.0,
+      "avg_faithfulness": 0.03333333333333333,
+      "avg_response_relevancy": 0.3595865997581793,
+      "avg_execution_time": 75.88183066666666,
+      "sample_count": 3
+    }
+  },
+  "summary_by_difficulty": {
+    "fácil": {
+      "avg_context_relevance": 1.0,
+      "avg_faithfulness": 0.10526315789473684,
+      "avg_response_relevancy": 0.0,
+      "avg_execution_time": 78.7221595,
+      "sample_count": 2
+    },
+    "médio": {
+      "avg_context_relevance": 1.0,
+      "avg_faithfulness": 0.15000000000000002,
+      "avg_response_relevancy": 0.5902119839431303,
+      "avg_execution_time": 69.452141,
+      "sample_count": 2
+    },
+    "difícil": {
+      "avg_context_relevance": 1.0,
+      "avg_faithfulness": 0.0,
+      "avg_response_relevancy": 0.48913637960192136,
+      "avg_execution_time": 88.71258,
+      "sample_count": 2
+    }
+  },
+  "detailed_results": [
+    {
+      "prompt_type": "zero-shot",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "Simple phishing techniques using generic bank impersonation to request user data update",
+      "generation_context": "Create a simple phishing email pretending to be from a generic bank asking the user to update their registration data. The email should have obvious errors and be easily identifiable as fraud.",
+      "generated_email": {
+        "receptor": "John Doe",
+        "remetente": "support@yourbnk.com",
+        "assunto": "URGENT: Upddate Your Bank Registration DATA NOW!",
+        "conteudo": "Dear Costumer, \n\nWe have detected issues with your bank account. To avoid freezing of your account, you must update your registration data immediately. \n\nClick here: www.yourbnk-update.com \n\nDo not ignore this message! Failure to comply will result in permanent account suspension. \n\nBest Regards, \nYourBnk Support Team",
+        "explicacao": "This email contains multiple red flags that are common in phishing emails: 1. Misspelled words (Upddate, Costumer). 2. The email address of the sender (support@yourbnk.com) is suspicious and not the official email address of the bank. 3. The message creates a sense of urgency to pressure the recipient into taking action without thinking. 4. The link provided for updating the registration data is not an official bank link. Always check the email address of the sender and the URLs before clicking on any links.",
+        "nivel": "easy",
+        "categoria": "financial",
+        "links": [
+          "www.yourbnk-update.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.21052631578947367,
+        "response_relevancy": 0.0
+      },
+      "execution_time": 86.959163,
+      "error": null
+    },
+    {
+      "prompt_type": "zero-shot",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "Professional phishing techniques in corporate IT department context with subtle suspicious indicators",
+      "generation_context": "Create a phishing email as if it's from the company's IT department asking employee João Silva to update his system password. The email should appear professional but with some suspicious indicators.",
+      "generated_email": {
+        "receptor": "João Silva",
+        "remetente": "IT Department <it-department@yourcompany.com>",
+        "assunto": "Important: System Password Update Required",
+        "conteudo": "Dear João Silva,\n\nOur records indicate that it's time for your mandatory system password update. To maintain the security of your account, please update your password by clicking the link below:\n\n[Update Password](http://www.update-password-yourcompany.com)\n\nFor security reasons, this link will expire in 48 hours. If you are unable to update your password within this timeframe, please contact the IT department directly at it-department@yourcompany.com.\n\nPlease note that your new password should contain a combination of uppercase and lowercase letters, numbers, and special characters. It should not contain your name, date of birth, or any other personal information.\n\nSincerely,\nIT Department\nYour Company",
+        "explicacao": "This email appears to be from the company's IT department, asking the employee to update his system password. However, there are several suspicious indicators that this is a phishing email. First, the email address of the sender is not official but a spoofed version. Second, the link provided for updating the password leads to a suspicious website that does not match the official company website. Third, the email creates a sense of urgency by stating that the link will expire in 48 hours, which is a common tactic used in phishing attacks to rush the victim into taking action.",
+        "nivel": "medium",
+        "categoria": "spear phishing",
+        "links": [
+          "http://www.update-password-yourcompany.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.2,
+        "response_relevancy": 0.6102798272817513
+      },
+      "execution_time": 62.338636,
+      "error": null
+    },
+    {
+      "prompt_type": "zero-shot",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "Advanced spear phishing techniques for impersonating financial directors and creating urgency around internal projects.",
+      "generation_context": "Create a sophisticated spear phishing email as if it's from the financial director Maria Santos to the account manager Pedro Oliveira, about an urgent transfer related to Project Expansion 2025. The email should be nearly indistinguishable from a legitimate communication.",
+      "generated_email": {
+        "receptor": "Pedro Oliveira",
+        "remetente": "Maria Santos <Maria.Santos@ourcompany.com>",
+        "assunto": "Urgent: Project Expansion 2025 Transfer Request",
+        "conteudo": "Hello Pedro,\n\nI hope this email finds you well. I am writing regarding an urgent matter that requires your immediate attention. Due to an unexpected situation, we need to make an immediate transfer for Project Expansion 2025. I am currently in a meeting and unable to do this myself.\n\nCould you please log in to our financial system using the below link and transfer the amount of $50,000 to the account number 12345678, belonging to our partner company, Expansion Industries? This is crucial for the project to proceed as scheduled.\n\nLink: www.ourcompany-finance.com\n\nApologies for the short notice and thank you for your prompt attention to this matter. Please let me know once the transfer is completed.\n\nKind regards,\nMaria Santos\nFinancial Director",
+        "explicacao": "This email is a highly sophisticated phishing attempt. The sender appears to be Maria Santos, the Financial Director, and the request is related to an actual project, Project Expansion 2025. However, the request for an immediate transfer is unusual. The link provided is a phishing link, designed to capture Pedro's login credentials when he attempts to log in to the 'financial system'.",
+        "nivel": "hard",
+        "categoria": "spear phishing",
+        "links": [
+          "www.ourcompany-finance.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.4696571005338142
+      },
+      "execution_time": 96.83047,
+      "error": null
+    },
+    {
+      "prompt_type": "chain-of-thought",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "Simple phishing techniques using generic bank impersonation to request user data update",
+      "generation_context": "Create a simple phishing email pretending to be from a generic bank asking the user to update their registration data. The email should have obvious errors and be easily identifiable as fraud.",
+      "generated_email": {
+        "receptor": "Customer",
+        "remetente": "noreply@yourbank123.com",
+        "assunto": "URGETN: Update Your Registration Data!!!",
+        "conteudo": "Dear Valued Customer, \n\nWe hve noticed some irregularities in your account. We need you to update your registration data immediately to prevent any service interruption. \n\nPlease visit the following link to update your details: \n\nhttp://yourbank123-update-info.com \n\nThank you for your immediate attention to this matter. \n\nBest, \nYour Bank",
+        "explicacao": "This email is a classic example of a phishing email of easy difficulty. It uses generic salutations ('Dear Valued Customer') and requests for sensitive information (update your registration data). The sender's email is clearly suspicious (noreply@yourbank123.com), and the subject has obvious spelling errors ('URGETN'). The urgency is exaggerated and obvious ('Update Your Registration Data!!!'). The link provided is visibly suspicious (http://yourbank123-update-info.com).",
+        "nivel": "easy",
+        "categoria": "Bank",
+        "links": [
+          "http://yourbank123-update-info.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.0
+      },
+      "execution_time": 70.485156,
+      "error": null
+    },
+    {
+      "prompt_type": "chain-of-thought",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "Professional phishing techniques in corporate settings with subtle indicators of suspicion",
+      "generation_context": "Create a phishing email as if it's from the IT department of a company, asking employee João Silva to update his system password. The email should appear professional but with some suspicious indicators.",
+      "generated_email": {
+        "receptor": "João Silva",
+        "remetente": "ITsupport@companhia.com",
+        "assunto": "Mandatory System Password Update",
+        "conteudo": "Dear João Silva,\n\nAs part of our ongoing efforts to ensure system security, we are requiring all employees to update their system passwords. Please click the link below to update your password now.\n\n[companhia-security.com/password-reset](http://companhia-security.com/password-reset)\n\nThis is a mandatory action that needs to be completed within the next 24 hours to avoid any disruptions to your access.\n\nBest regards,\nIT Support Team\n\nP.S. If you have any questions or need assistance, please do not hesitate to contact us.",
+        "explicacao": "This email is an example of a medium-level phishing attempt. Although it appears to come from a legitimate source (the IT department), there are several suspicious indicators. The email domain is slightly different from the normal company domain (companhia.com instead of company.com), the link leads to a site that isn't secure (http instead of https), and the urgency of the request is a common tactic used in phishing attacks.",
+        "nivel": "medium",
+        "categoria": "Targeted Attacks, Trust, Fear and Urgency",
+        "links": [
+          "http://companhia-security.com/password-reset"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.1,
+        "response_relevancy": 0.5701441406045094
+      },
+      "execution_time": 76.565646,
+      "error": null
+    },
+    {
+      "prompt_type": "chain-of-thought",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "Advanced spear phishing techniques using social engineering and referencing internal projects to create urgency.",
+      "generation_context": "Create a highly sophisticated spear phishing email as if it's from the CFO Maria Santos to the account manager Pedro Oliveira, about an urgent transfer related to the Expansion Project 2025. The email should be virtually indistinguishable from a legitimate communication.",
+      "generated_email": {
+        "receptor": "Pedro Oliveira",
+        "remetente": "Maria Santos <maria.santos@company.com>",
+        "assunto": "Urgent: Transfer Required for Expansion Project 2025",
+        "conteudo": "Hi Pedro,\n\nI hope you're well. I'm currently in a meeting with the board, and we urgently need to secure some resources for the Expansion Project 2025. Can you immediately transfer $100,000 to the account details below?\n\nBank: Global Bank\nAccount No: 1234567890\nSort Code: 00-00-00\n\nPlease treat this as a matter of urgency, as we need to secure these resources to continue with our plans. I trust you understand the importance of this.\n\nOnce done, please reply to this email confirming the transfer.\n\nBest regards,\n\nMaria Santos\nCFO",
+        "explicacao": "This email is a classic example of Spear Phishing and Impersonation. It's a highly sophisticated attack, where the attacker impersonates the CFO of the company, Maria Santos, and sends an urgent email to the account manager, Pedro Oliveira. The email is tailored to the recipient, includes specific information about the company's project, and creates a sense of urgency. The email also uses Social Engineering, appealing to Pedro's sense of duty and trust in Maria.",
+        "nivel": "hard",
+        "categoria": "Spear Phishing",
+        "links": []
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.5086156586700284
+      },
+      "execution_time": 80.59469,
+      "error": null
+    }
+  ]
+}

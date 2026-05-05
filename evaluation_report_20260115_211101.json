@@ -1,0 +1,234 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-15T21:11:01.379116",
+    "models_tested": [
+      "gpt-3.5-turbo",
+      "gpt-4",
+      "o4-mini"
+    ],
+    "difficulties": [
+      "fácil",
+      "médio",
+      "difícil"
+    ],
+    "total_evaluations": 9
+  },
+  "summary_by_model": {
+    "gpt-3.5-turbo": {
+      "avg_context_relevance": null,
+      "avg_faithfulness": null,
+      "avg_response_relevancy": null,
+      "avg_execution_time": 64.005241,
+      "sample_count": 2
+    },
+    "gpt-4": {
+      "avg_context_relevance": null,
+      "avg_faithfulness": null,
+      "avg_response_relevancy": null,
+      "avg_execution_time": 78.932307,
+      "sample_count": 3
+    }
+  },
+  "summary_by_difficulty": {
+    "fácil": {
+      "avg_context_relevance": null,
+      "avg_faithfulness": null,
+      "avg_response_relevancy": null,
+      "avg_execution_time": 65.9586075,
+      "sample_count": 2
+    },
+    "médio": {
+      "avg_context_relevance": null,
+      "avg_faithfulness": null,
+      "avg_response_relevancy": null,
+      "avg_execution_time": 81.451512,
+      "sample_count": 1
+    },
+    "difícil": {
+      "avg_context_relevance": null,
+      "avg_faithfulness": null,
+      "avg_response_relevancy": null,
+      "avg_execution_time": 75.719338,
+      "sample_count": 2
+    }
+  },
+  "detailed_results": [
+    {
+      "model": "gpt-3.5-turbo",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "Simple phishing email template pretending to be from a generic bank asking the user to update their personal information.",
+      "generation_context": "The scenario is creating a simple phishing email pretending to be from a generic bank asking the user to update their personal information. The email should contain obvious errors and be easily identifiable as fraudulent.",
+      "generated_email": {
+        "receptor": "usuário-alvo",
+        "remetente": "noreply@genericbank.com",
+        "assunto": "Atualização de Informações Importantes",
+        "conteudo": "Prezado cliente,\n\nNós do Banco Genérico estamos solicitando uma atualização urgente de suas informações pessoais. Por favor, clique no link abaixo e preencha os campos solicitados.\n\nLink para atualização: [hxxp://genericbank.com/atualizacao-info]\n\nAgradecemos sua cooperação.\n\nAtenciosamente,\nEquipe de Suporte Banco Genérico",
+        "explicacao": "Este email de phishing fácil simula ser do Banco Genérico e solicita uma atualização de informações pessoais com erros ortográficos evidentes, remetente genérico, urgência exagerada e link suspeito.",
+        "nivel": "fácil",
+        "categoria": "Atualização de Informações",
+        "links": [
+          "hxxp://genericbank.com/atualizacao-info"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": null,
+        "faithfulness": null,
+        "response_relevancy": null,
+        "error": "'OpenAIEmbeddings' object has no attribute 'embed_query'"
+      },
+      "execution_time": 51.029728,
+      "error": null
+    },
+    {
+      "model": "gpt-3.5-turbo",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 7.219366,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 16385 tokens. However, your messages resulted in 31386 tokens (31320 in the messages, 66 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "model": "gpt-3.5-turbo",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "Advanced spear phishing techniques for creating highly sophisticated emails impersonating specific individuals in a corporate setting.",
+      "generation_context": "The scenario involves creating a highly sophisticated spear phishing email from the finance director Maria Santos to the account manager Pedro Oliveira, regarding an urgent transfer related to Project Expansion 2025. The email should be nearly indistinguishable from legitimate communication.",
+      "generated_email": {
+        "receptor": "Pedro Oliveira",
+        "remetente": "Maria Santos <financeiro@empresa.com>",
+        "assunto": "Transferência Urgente - Projeto Expansão 2025",
+        "conteudo": "Prezado Pedro,\\n\\nEspero que este email o encontre bem. Como diretora financeira da empresa, estou entrando em contato para solicitar uma transferência urgente relacionada ao Projeto Expansão 2025. Esta transferência é crucial para o avanço do projeto e requer ação imediata. Por favor, entre em contato comigo para mais detalhes sobre os procedimentos necessários.\\n\\nAgradeço antecipadamente pela sua atenção e colaboração.\\n\\nAtenciosamente,\\nMaria Santos",
+        "explicacao": "Este email de phishing foi criado com um nível de dificuldade 'difícil', seguindo as características de um ataque sofisticado. O remetente foi personalizado como Maria Santos, utilizando um endereço de email legítimo da empresa. O assunto e o conteúdo do email criam uma situação de urgência sutil e bem justificada, alinhada com o contexto empresarial realista. Não há erros ortográficos ou gramaticais evidentes, e a linguagem utilizada é profissional. A mensagem inclui detalhes específicos sobre o Projeto Expansão 2025, demonstrando personalização avançada. Os links foram omitidos para segurança, mas seriam camuflados de forma convincente. O call-to-action sutilmente solicita que o destinatário entre em contato para mais detalhes, sem pedidos diretos de informações sensíveis.",
+        "nivel": "difícil",
+        "categoria": "spear phishing",
+        "links": []
+      },
+      "ragas_scores": {
+        "context_relevance": null,
+        "faithfulness": null,
+        "response_relevancy": null,
+        "error": "'OpenAIEmbeddings' object has no attribute 'embed_query'"
+      },
+      "execution_time": 76.980754,
+      "error": null
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "Common characteristics and techniques of phishing emails pretending to be from banks",
+      "generation_context": "O cenário é a criação de um e-mail de phishing simples, fingindo ser de um banco genérico, pedindo ao usuário para atualizar seus dados cadastrais. O e-mail deve conter erros óbvios e ser facilmente identificável como fraude.",
+      "generated_email": {
+        "receptor": "Usuário",
+        "remetente": "noreply@BancoGener1co.com",
+        "assunto": "URGENTE!!! Atualização de Dados",
+        "conteudo": "Caro Cliente, \n\nIdentificamos uma atividade suspeita em sua conta. Para sua segurança, pedimos que você atualize seus dados imediatamente!!! \n\nClique aqui: www.bancofalso123.com \n\nAtenciosamente, \nTime do Banco Gener1co",
+        "explicacao": "Este é um exemplo de phishing por e-mail de nível fácil. O remetente é genérico e contém erros de ortografia, o assunto do e-mail exagera na urgência, e o link é claramente falso. A ausência de personalização também é um indicador de fraude.",
+        "nivel": "Fácil",
+        "categoria": "Phishing por E-mail",
+        "links": [
+          "www.bancofalso123.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": null,
+        "faithfulness": null,
+        "response_relevancy": null,
+        "error": "'OpenAIEmbeddings' object has no attribute 'embed_query'"
+      },
+      "execution_time": 80.887487,
+      "error": null
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "Professional spear phishing techniques using IT department impersonation and password update requests",
+      "generation_context": "O cenário é um e-mail de phishing para o funcionário João Silva, vindo do departamento de TI da empresa, solicitando que ele atualize sua senha do sistema. O e-mail deve parecer profissional, mas com alguns indicadores de suspeita.",
+      "generated_email": {
+        "receptor": "João Silva",
+        "remetente": "suporte@ti-empresa.com",
+        "assunto": "Alerta de Segurança: Atualização Necessária",
+        "conteudo": "Prezado João Silva,\n\nDetectamos atividade suspeita em sua conta de usuário na nossa rede corporativa. Por razões de segurança, precisamos que você atualize sua senha imediatamente.\n\nPor favor, clique neste link para redefinir sua senha: [URL encurtado]\n\nSe você não realizar esta ação dentro de 24 horas, sua conta será temporariamente suspensa para proteger a integridade de nossos sistemas.\n\nAtenciosamente,\nDepartamento de TI",
+        "explicacao": "Este é um exemplo de um e-mail de phishing de nível médio. Utiliza a técnica de impersonação ao se passar pelo departamento de TI da empresa. O link para a atualização da senha é encurtado, escondendo o verdadeiro URL malicioso. A solicitação de ação imediata cria um senso de urgência, potencialmente levando o destinatário a agir sem pensar. A ameaça de ter a conta suspensa se a ação não for tomada aumenta o medo e a urgência. O uso do nome do destinatário adiciona um toque de personalização, tornando o e-mail mais convincente.",
+        "nivel": "Médio",
+        "categoria": "Phishing",
+        "links": [
+          "URL encurtado"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": null,
+        "faithfulness": null,
+        "response_relevancy": null,
+        "error": "'OpenAIEmbeddings' object has no attribute 'embed_query'"
+      },
+      "execution_time": 81.451512,
+      "error": null
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "Advanced spear phishing techniques for creating indistinguishable emails using urgent financial transactions as a pretext",
+      "generation_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "generated_email": {
+        "receptor": "Pedro Oliveira",
+        "remetente": "Maria Santos <maria.santos@empresa.com>",
+        "assunto": "Transferência Urgente - Projeto Expansão 2025",
+        "conteudo": "Caro Pedro,\n\nEspero que esteja bem.\n\nEstou escrevendo para informá-lo sobre uma mudança repentina na estratégia financeira do Projeto Expansão 2025. Devido a uma oportunidade de investimento de última hora, precisamos fazer uma transferência bancária urgente para garantir nossa posição.\n\nPor favor, acesse o nosso sistema financeiro interno através do link abaixo e prossiga com a transferência para a conta indicada. Precisamos que esta transferência seja feita até o final do dia para garantir o investimento.\n\n[www.empresafinanceira.com/login]\n\nSe tiver algum problema ou dúvida, por favor, me avise o mais rápido possível.\n\nObrigada pela sua atenção e cooperação.\n\nAtenciosamente,\nMaria Santos\nDiretora Financeira",
+        "explicacao": "Este é um e-mail de spear phishing altamente sofisticado. O remetente é convincente, parecendo ser da diretora financeira da empresa. O assunto é relevante e urgente, relacionado com um projeto atual da empresa. O conteúdo é profissional e personalizado, mencionando detalhes específicos que seriam conhecidos pelo receptor. O link parece legítimo, mas é uma URL falsa que redireciona para um site malicioso. A solicitação de ação é sutil, pedindo ao receptor para fazer uma transferência bancária através do sistema financeiro da empresa.",
+        "nivel": "Difícil",
+        "categoria": "Spear Phishing",
+        "links": [
+          "www.empresafinanceira.com/login"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": null,
+        "faithfulness": null,
+        "response_relevancy": null,
+        "error": "'OpenAIEmbeddings' object has no attribute 'embed_query'"
+      },
+      "execution_time": 74.457922,
+      "error": null
+    },
+    {
+      "model": "o4-mini",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 0.234831,
+      "error": "Error code: 400 - {'error': {'message': \"Unsupported value: 'temperature' does not support 0.0 with this model. Only the default (1) value is supported.\", 'type': 'invalid_request_error', 'param': 'temperature', 'code': 'unsupported_value'}}"
+    },
+    {
+      "model": "o4-mini",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 0.223135,
+      "error": "Error code: 400 - {'error': {'message': \"Unsupported value: 'temperature' does not support 0.0 with this model. Only the default (1) value is supported.\", 'type': 'invalid_request_error', 'param': 'temperature', 'code': 'unsupported_value'}}"
+    },
+    {
+      "model": "o4-mini",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "",
+      "generation_context": "",
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 0.247048,
+      "error": "Error code: 400 - {'error': {'message': \"Unsupported value: 'temperature' does not support 0.0 with this model. Only the default (1) value is supported.\", 'type': 'invalid_request_error', 'param': 'temperature', 'code': 'unsupported_value'}}"
+    }
+  ]
+}

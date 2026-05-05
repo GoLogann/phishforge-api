@@ -1,30 +1,28 @@
 import os
+
 from dotenv import load_dotenv
 from qdrant_client import QdrantClient
 
-# Importe os componentes da sua aplicação
 from app.domain.services.document_processor import DocumentProcessor
 from app.domain.services.openai.embedding_client import OpenAIEmbeddingClient
 from app.infra.qdrant.store import QdrantVectorStore
 
-load_dotenv()
+from app.core.config import settings
 
-# Caminho absoluto para a pasta de artigos, para que o script funcione de qualquer lugar
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 ARTICLES_DIR = os.path.join(PROJECT_ROOT, "data", "articles")
 
-# Constantes de configuração
-COLLECTION_NAME = "phishing_articles"
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+        
+COLLECTION_NAME = settings.COLLECTION_NAME
+OPENAI_API_KEY = settings.OPENAI_API_KEY
+QDRANT_URL = settings.QDRANT_URL
 
 
-# --- Injeção de Dependência Manual ---
 qdrant_client = QdrantClient(url=QDRANT_URL)
 embedding_client = OpenAIEmbeddingClient(api_key=OPENAI_API_KEY)
 vector_store = QdrantVectorStore(client=qdrant_client, embedding_client=embedding_client)
-processor = DocumentProcessor(chunk_size=800, chunk_overlap=150)
+processor = DocumentProcessor(chunk_size=1024, chunk_overlap=256)
 
 def delete_articles_collection():
     """Deleta a coleção para garantir uma re-indexação limpa."""

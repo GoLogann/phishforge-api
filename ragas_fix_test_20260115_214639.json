@@ -1,0 +1,47 @@
+[
+  {
+    "difficulty": "fácil",
+    "old_scores": {
+      "context_relevance": 1.0,
+      "faithfulness": 0.0,
+      "response_relevancy": 0.0
+    },
+    "new_scores": {
+      "context_relevance": 1.0,
+      "faithfulness": 0.0,
+      "response_relevancy": 0.5179837547758734
+    },
+    "execution_time": 136.376632,
+    "email_preview": "De: noreply@banco-suspeito.com\nPara: cliente@exemplo.com\nAssunto: ATUALIZE SEUS DADOS AGORA!!! URGENTE!!!\n\nOlá Cliente,\n\nDetectamos uma atividade suspeita em sua conta. Para evitar que sua conta seja "
+  },
+  {
+    "difficulty": "médio",
+    "old_scores": {
+      "context_relevance": 1.0,
+      "faithfulness": 0.0,
+      "response_relevancy": 0.39796961176078244
+    },
+    "new_scores": {
+      "context_relevance": 1.0,
+      "faithfulness": 0.0,
+      "response_relevancy": 0.44726608949867286
+    },
+    "execution_time": 120.579316,
+    "email_preview": "De: ti@empresa.com\nPara: João Silva\nAssunto: Atualização de Segurança Necessária - Ação Requerida\n\nCaro João Silva,\n\nEstamos implementando uma atualização crítica de segurança em nosso sistema e sua c"
+  },
+  {
+    "difficulty": "difícil",
+    "old_scores": {
+      "context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "response_relevancy": 0.5135310984869786
+    },
+    "new_scores": {
+      "context_relevance": 1.0,
+      "faithfulness": 1.0,
+      "response_relevancy": 0.4724465508123397
+    },
+    "execution_time": 137.68073,
+    "email_preview": "De: maria.santos@empresa.com.br\nPara: Pedro Oliveira\nAssunto: Transferência Urgente - Projeto Expansão 2025\n\nPrezado Pedro,\n\nEspero que esteja bem. Estou entrando em contato para solicitar sua ajuda c"
+  }
+]

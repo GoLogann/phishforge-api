@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-16T00:07:22.827286",
+    "model": "gpt-4",
+    "experiment": "Generation WITHOUT RAG",
+    "total_evaluations": 3,
+    "rag_enabled": false
+  },
+  "summary": {
+    "avg_execution_time": 10.157103,
+    "successful_count": 3,
+    "failed_count": 0
+  },
+  "detailed_results": [
+    {
+      "model": "gpt-4",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "generated_email": {
+        "receptor": "user123@gmail.com",
+        "remetente": "noreply@banco123.com",
+        "assunto": "URGENTE!!! Atualize seus Dados Cadastrais",
+        "conteudo": "Caro cliente,\n\nNosso sistema requer uma atualização urgente de seus dados cadastrais. Clique no link abaixo e preencha as informações solicitadas.\n\n[http://banco123.urgent-update.com]\n\nAtenciosamente,\nEquipe Banco123",
+        "explicacao": "Este é um email de phishing de nível fácil. O remetente é genérico, o assunto contém um indicativo de urgência exagerada e o conteúdo solicita de forma direta a ação do usuário em clicar em um link suspeito para atualizar dados cadastrais. A falta de personalização e a ameaça explícita tornam o email facilmente identificável como uma tentativa de fraude.",
+        "nivel": "fácil",
+        "categoria": "phishing",
+        "links": [
+          "http://banco123.urgent-update.com"
+        ]
+      },
+      "execution_time": 7.545429,
+      "error": null
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "generated_email": {
+        "receptor": "João Silva",
+        "remetente": "suporte@ti-departamento.com",
+        "assunto": "Atualização Obrigatória de Senha do Sistema",
+        "conteudo": "Prezado João Silva,\n\nNotamos atividades suspeitas em sua conta e para garantir a segurança de seus dados, estamos implementando uma atualização obrigatória de senha. Por favor, acesse o link abaixo para atualizar sua senha imediatamente.\n\n[www.atualizacaodesenha-ti.com]\n\nEste link irá expirar em 24 horas para sua segurança.\n\nAtenciosamente,\nDepartamento de TI",
+        "explicacao": "Neste exemplo, o email parece ser do Departamento de TI da empresa do destinatário, solicitando que ele atualize sua senha devido a atividades suspeitas. O remetente parece legítimo, mas tem alguns sinais de alerta, como o domínio 'ti-departamento.com' em vez do domínio da empresa real. Além disso, o link para atualização de senha é um domínio diferente, o que pode levantar suspeitas. A urgência da ação também é um sinal de alerta, já que o link expira em 24 horas.",
+        "nivel": "médio",
+        "categoria": "Email de Phishing",
+        "links": [
+          "www.atualizacaodesenha-ti.com"
+        ]
+      },
+      "execution_time": 10.502936,
+      "error": null
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "generated_email": {
+        "receptor": "Pedro Oliveira",
+        "remetente": "Maria Santos <maria.santos@company.com>",
+        "assunto": "Transferência Urgente - Projeto Expansão 2025",
+        "conteudo": "Olá Pedro,\n\nEspero que esteja bem.\n\nEstou entrando em contato para solicitar sua ajuda com uma transferência urgente que precisamos fazer para finalizar o Projeto Expansão 2025. Devido a um problema técnico no nosso sistema financeiro, estou impossibilitada de realizar a operação e preciso que você faça isso por mim.\n\nPoderia, por favor, acessar nosso portal financeiro pelo link abaixo e fazer a transferência para a conta detalhada? Acredito que você já esteja familiarizado com o processo, mas estou à disposição para quaisquer dúvidas.\n\nPortal Financeiro: http://www.company-finance.com\n\nDetalhes da Conta:\nNome da Empresa: XYZ Industries\nNúmero da Conta: 123456789\nValor: R$ 150.000,00\n\nAgradeço sua ajuda com isso e peço desculpas pelo inconveniente. Seu apoio é muito importante para a conclusão do nosso projeto.\n\nAtenciosamente,\nMaria Santos\nDiretora Financeira",
+        "explicacao": "Este é um exemplo de um email de spear phishing altamente sofisticado. O remetente parece ser legítimo e o assunto é relevante e urgente, mas não de forma exagerada. O conteúdo do email é bem escrito e personalizado para o receptor, mencionando um projeto específico e solicitando uma ação específica. O link para o portal financeiro é uma tentativa de typosquatting, onde o domínio é muito semelhante ao original, mas leva a um site falso. O email também explora a autoridade da diretora financeira e a urgência da situação para pressionar o receptor a agir rapidamente e sem questionar.",
+        "nivel": "difficult",
+        "categoria": "spear phishing",
+        "links": [
+          "http://www.company-finance.com"
+        ]
+      },
+      "execution_time": 12.422944,
+      "error": null
+    }
+  ]
+}

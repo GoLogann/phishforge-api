@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-16T00:13:35.685257",
+    "model": "gpt-4",
+    "experiment": "Generation WITH RAG",
+    "total_evaluations": 3,
+    "rag_enabled": true
+  },
+  "summary": {
+    "avg_execution_time": 82.94341733333334,
+    "avg_context_relevance": 1.0,
+    "avg_faithfulness": 0.030303030303030304,
+    "avg_response_relevancy": 0.5294342679895249,
+    "successful_count": 3,
+    "failed_count": 0
+  },
+  "detailed_results": [
+    {
+      "model": "gpt-4",
+      "difficulty": "fácil",
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "Simple phishing techniques using generic bank impersonation to request user data update",
+      "generation_context": "Create a simple phishing email pretending to be from a generic bank asking the user to update their registration data. The email should have obvious errors and be easily identifiable as fraud.",
+      "generated_email": {
+        "receptor": "user123@example.com",
+        "remetente": "admin@yourbank.com",
+        "assunto": "URGENT: Update Your Bank Register Data!!!",
+        "conteudo": "Dear Customer,\n\nWe have noticed some unusual activity on your bank account. For your protection, we have temporarily locked your account.\n\nPlease click on the link below to update your registration data and reactivate your account.\n\n[http://yourbank.com.update.yourdata.com]\n\nFailure to update your data within 24 hours will result in permanent account suspension.\n\nThank you for your prompt attention to this matter.\n\nYour Bank",
+        "explicacao": "This email uses several phishing tactics. It imitates a trusted source (a bank), creates a sense of urgency by stating that the account has been locked and will be permanently suspended if not updated within 24 hours, and provides a link for the user to update their data. However, the email is easily identifiable as a fraud due to the suspicious sender, exaggerated urgency, and visibly suspicious link.",
+        "nivel": "easy",
+        "categoria": "Phishing",
+        "links": [
+          "http://yourbank.com.update.yourdata.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.09090909090909091,
+        "response_relevancy": 0.48760899574084426
+      },
+      "execution_time": 83.401139,
+      "error": null
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "médio",
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "Professional phishing techniques in corporate IT department scenarios with subtle indicators of suspicion",
+      "generation_context": "Create a phishing email as if it's from the company's IT department asking employee João Silva to update his system password. The email should appear professional but with some suspicious indicators.",
+      "generated_email": {
+        "receptor": "João Silva",
+        "remetente": "suporte@ti-empresa.com",
+        "assunto": "Notificação urgente: Atualização imediata da senha do sistema",
+        "conteudo": "Prezado João Silva,\n\nDetectamos atividades suspeitas em sua conta e, por segurança, solicitamos que você atualize imediatamente sua senha.\n\nClique aqui para atualizar sua senha agora.\n\nAgradecemos sua atenção imediata a esta questão.\n\nAtenciosamente,\nEquipe de Suporte de TI",
+        "explicacao": "Este é um email de phishing de nível médio. O remetente parece plausível, mas um olhar atento pode revelar que o domínio do email é ligeiramente diferente do domínio oficial da empresa. O assunto do email cria um senso de urgência, uma tática comum em ataques de phishing. O conteúdo do email é projetado para parecer profissional e imitar a comunicação interna da empresa, mas solicita que o usuário clique em um link, o que é uma bandeira vermelha. A personalização do email com o nome do destinatário é um indicador de um ataque de spear phishing.",
+        "nivel": "médio",
+        "categoria": "Spear Phishing",
+        "links": [
+          "http://www.ti-empresa.com/atualizarsenha"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.5774575118532511
+      },
+      "execution_time": 77.103627,
+      "error": null
+    },
+    {
+      "model": "gpt-4",
+      "difficulty": "difícil",
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "Advanced spear phishing techniques using social engineering and referencing internal projects to create urgency.",
+      "generation_context": "Create a sophisticated spear phishing email as if it's from the CFO Maria Santos to the account manager Pedro Oliveira, about an urgent transfer related to the Expansion Project 2025. The email should be nearly indistinguishable from a legitimate communication.",
+      "generated_email": {
+        "receptor": "Pedro Oliveira",
+        "remetente": "Maria Santos <maria.santos@expansion2025.com>",
+        "assunto": "Ação Necessária: Transferência Urgente para o Projeto de Expansão 2025",
+        "conteudo": "Olá Pedro,\n\nEspero que esteja bem.\n\nEstou escrevendo para solicitar sua ajuda urgente em relação a uma transferência financeira que precisa ser feita para o nosso Projeto de Expansão 2025. Há uma nova oportunidade estratégica que requer ação imediata e estou atualmente em uma reunião e incapaz de realizar a transferência eu mesma.\n\nPor favor, faça a transferência para os detalhes da conta fornecidos no link abaixo. O valor a ser transferido é de R$150.000,00.\n\n[Link para o site]\n\nEu realmente aprecio sua ajuda com isso e peço desculpas pelo inconveniente. Fico à disposição para qualquer dúvida.\n\nObrigada,\n\nMaria Santos\nCFO",
+        "explicacao": "Este e-mail utiliza uma técnica de spear phishing, onde o atacante se passa pela CFO, Maria Santos, para enganar o gerente de contas, Pedro Oliveira. A urgência é criada pelo uso de uma 'oportunidade estratégica' que requer ação imediata. Além disso, o atacante utiliza a técnica de engenharia social, fazendo-se passar por uma pessoa de autoridade na empresa e solicitando uma ação específica, neste caso, uma transferência financeira. O link fornecido no e-mail é provavelmente malicioso e pode levar a um site de phishing onde as credenciais de Pedro podem ser roubadas.",
+        "nivel": "difícil",
+        "categoria": "spear phishing",
+        "links": [
+          "Link para o site"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.5232362963744789
+      },
+      "execution_time": 88.325486,
+      "error": null
+    }
+  ]
+}

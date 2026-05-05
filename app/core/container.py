@@ -1,10 +1,9 @@
 from dependency_injector import containers, providers
-
+from langchain_openai import ChatOpenAI
+from openai import OpenAI
 from qdrant_client import QdrantClient
-
+from ragas.embeddings import embedding_factory
 from ragas.llms import LangchainLLMWrapper
-from ragas.embeddings import LangchainEmbeddingsWrapper
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 from app.core.config import settings
 from app.domain.services.document_processor import DocumentProcessor
@@ -16,11 +15,16 @@ from app.domain.services.prompt_normalizer import PromptNormalizer
 from app.domain.services.reranker import ReRanker
 from app.domain.services.response_generator import ResponseGenerator
 from app.domain.services.retriever import DocumentRetriever
-from app.domain.services.sentence_transformers.embedding_client import SentenceTransformersEmbeddingClient
-from app.infra.database.connection import DatabaseConnection
+from app.domain.services.sentence_transformers.embedding_client import (
+    SentenceTransformersEmbeddingClient,
+)
+from app.domain.services.user_answer_evaluator import UserAnswerEvaluator
+from app.infra.database.connection import DatabaseConnection, get_db_pool
 from app.infra.database.repositories.analytics_repository import AnalyticsRepository
+from app.infra.database.repositories.evaluation_repository import EvaluationRepository
 from app.infra.database.repositories.phishing_repository import PhishingEmailRepository
 from app.infra.qdrant.store import QdrantVectorStore
+
 
 class Container(containers.DeclarativeContainer):
     wiring_config = containers.WiringConfiguration(
@@ -28,7 +32,7 @@ class Container(containers.DeclarativeContainer):
     )
 
     config = providers.Configuration()
-    config.from_dict(settings.dict())
+    config.from_dict(settings.model_dump())
 
     db_connection = providers.Singleton(
         DatabaseConnection,
@@ -37,6 +41,10 @@ class Container(containers.DeclarativeContainer):
         user=config.DB_USER,
         password=config.DB_PASSWORD,
         database=config.DB_NAME,
+    )
+
+    db_pool = providers.Resource(
+        get_db_pool
     )
 
     qdrant_client = providers.Singleton(
@@ -75,6 +83,11 @@ class Container(containers.DeclarativeContainer):
         db=db_connection
     )
 
+    evaluation_repository = providers.Factory(
+        EvaluationRepository,
+        db_pool=db_pool
+    )
+
 
     embedding_service = providers.Factory(
         EmbeddingService,
@@ -91,6 +104,11 @@ class Container(containers.DeclarativeContainer):
         PromptNormalizer,
         api_key=config.OPENAI_API_KEY
         # O model_name "gpt-4o-mini" será usado como default da própria classe
+    )
+
+    user_answer_evaluator = providers.Factory(
+        UserAnswerEvaluator,
+        api_key=config.OPENAI_API_KEY
     )
 
     retriever = providers.Factory(
@@ -116,9 +134,8 @@ class Container(containers.DeclarativeContainer):
         api_key=config.OPENAI_API_KEY
     )
 
-    openai_embeddings_model = providers.Factory(
-        OpenAIEmbeddings,
-        model="text-embedding-3-large", 
+    openai_client = providers.Singleton(
+        OpenAI,
         api_key=config.OPENAI_API_KEY
     )
     
@@ -128,6 +145,8 @@ class Container(containers.DeclarativeContainer):
     )
 
     evaluation_embeddings = providers.Singleton(
-        LangchainEmbeddingsWrapper,
-        embeddings=openai_embeddings_model 
+        embedding_factory,
+        "openai",
+        model="text-embedding-3-large",
+        client=openai_client,
     )

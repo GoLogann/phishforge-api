@@ -1,0 +1,1460 @@
+{
+  "metadata": {
+    "experiment": "Experiment 1: RAG vs No RAG",
+    "model": "gpt-4",
+    "timestamp": "2026-01-16T01:42:35.948433",
+    "total_duration_seconds": 2129.728904,
+    "samples_per_difficulty": 10,
+    "total_samples": 60
+  },
+  "summary": {
+    "no_rag": {
+      "total_samples": 30,
+      "failed_samples": 0,
+      "avg_execution_time": 10.025964966666667,
+      "by_difficulty": {
+        "fácil": {
+          "count": 10,
+          "avg_execution_time": 8.520886
+        },
+        "médio": {
+          "count": 10,
+          "avg_execution_time": 9.8328639
+        },
+        "difícil": {
+          "count": 10,
+          "avg_execution_time": 11.724145
+        }
+      }
+    },
+    "with_rag": {
+      "total_samples": 23,
+      "failed_samples": 7,
+      "avg_execution_time": 75.10486152173912,
+      "by_difficulty": {
+        "fácil": {
+          "count": 8,
+          "avg_execution_time": 76.21758349999999,
+          "avg_context_relevance": 1.0,
+          "avg_faithfulness": 0.09469516551559895,
+          "avg_response_relevancy": 0.47107808426776937
+        },
+        "médio": {
+          "count": 6,
+          "avg_execution_time": 79.90631283333333,
+          "avg_context_relevance": 0.9166666666666666,
+          "avg_faithfulness": 0.07338358684434872,
+          "avg_response_relevancy": 0.5534651235167438
+        },
+        "difícil": {
+          "count": 9,
+          "avg_execution_time": 70.91480777777777,
+          "avg_context_relevance": 1.0,
+          "avg_faithfulness": 0.07407407407407407,
+          "avg_response_relevancy": 0.40687400849946553
+        }
+      },
+      "avg_context_relevance": 0.9782608695652174,
+      "avg_faithfulness": 0.08106650051554568,
+      "avg_response_relevancy": 0.4674470213799048
+    }
+  },
+  "detailed_results": [
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 1,
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "user@example.com",
+        "remetente": "support@yourbnk.com",
+        "assunto": "URGENTE!! Atualize Seus Dados Cadastrais!",
+        "conteudo": "Prezado cliente,\n\nIdentificamos atividades suspeitas em sua conta e precisamos que você atualize seus dados cadastrais para manter a segurança de sua conta. Clique no link abaixo para atualizar seus dados.\n\nhttp://yourbnk-update.com\n\nAgradecemos a sua compreensão.\n\nAtenciosamente,\nEquipe de Suporte Yourbnk",
+        "explicacao": "Este email é uma tentativa de phishing clássica, se passando por um banco e pedindo para o usuário atualizar seus dados cadastrais. Alguns sinais de que este é um email de phishing incluem o remetente suspeito (\"support@yourbnk.com\" em vez de um domínio oficial do banco), a urgência no assunto do email, e o link suspeito que não corresponde ao site oficial do banco. Além disso, o email não é personalizado para o destinatário, o que é um sinal comum de fraude.",
+        "nivel": "fácil",
+        "categoria": "Phishing Bancário",
+        "links": [
+          "http://yourbnk-update.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 11.446677,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 2,
+      "user_context": "Crie um email de phishing básico fingindo ser de uma loja online genérica informando sobre uma compra não reconhecida. Deve ter erros gramaticais evidentes.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Usuário",
+        "remetente": "noreply@comprasonline123.com",
+        "assunto": "URGENTE!!! Confirmacao de Compra Necessaria!!!",
+        "conteudo": "Prezado Cliente, \\n\\nDetectamos uma atividade suspeita no seu cadastro. Uma compra de valor elevado foi realizada em sua conta. Por favor, verifique imediatamente se você reconhece esta transação.\\n\\nDetalhes da Compra:\\n- Produto: iPhone 13 Pro Max\\n- Valor: $1,399.00\\n\\nCaso você não reconheça esta compra, acesse o link abaixo para cancelar a transação imediatamente ou sua conta será bloqueada.\\n\\nwww.cancelacompra.suspeito.com\\n\\nAtenciosamente,\\nEquipe de Suporte",
+        "explicacao": "Este email de phishing é uma tentativa de fazer com que o usuário clique no link fornecido para 'cancelar' uma compra que eles não reconhecem. O remetente e o link são claramente suspeitos, e a urgência exagerada e ameaça de bloqueio de conta são indicativos de uma tentativa de phishing.",
+        "nivel": "Fácil",
+        "categoria": "Phishing Financeiro",
+        "links": [
+          "www.cancelacompra.suspeito.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 8.669953,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 3,
+      "user_context": "Crie um email de phishing simples fingindo ser de um serviço de streaming pedindo atualização de pagamento. O email deve ter formatação amadora.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "user@example.com",
+        "remetente": "noreply@streamingplatform123.com",
+        "assunto": "URGENTE!!! Atualize seus detalhes de pagamento!",
+        "conteudo": "Caro usuário,\\n\\nNosso sistema detectou um problema com seu método de pagamento. É necessário que você atualize seus detalhes para continuar a desfrutar de nossos serviços.\\n\\nClique aqui: http://bit.ly/1234Update\\n\\nSeu serviço será interrompido se você não atualizar seus detalhes de pagamento em 24 horas.\\n\\nObrigado,\\nEquipe de suporte",
+        "explicacao": "Este é um exemplo de phishing de nível fácil. O remetente é genérico e não personalizado, o assunto contém urgência óbvia e exagerada, o link é encurtado e claramente suspeito e a formatação é amadora. O email também solicita a atualização de informações sensíveis, criando um senso de urgência.",
+        "nivel": "facil",
+        "categoria": "Phishing",
+        "links": [
+          "http://bit.ly/1234Update"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 8.91773,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 4,
+      "user_context": "Crie um email de phishing básico fingindo ser do governo sobre restituição de imposto. Deve ter links suspeitos óbvios.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "john.doe@example.com",
+        "remetente": "govt.refund@taxes123.com",
+        "assunto": "URGENT!!! Your Tax Refund is READY!!!",
+        "conteudo": "Dear Taxpayer,\n\nYou have a tax refund of $5000 due to overpayment. Please click the links below to claim your refund immediately. Failure to do so may result in forfeiture of your refund.\n\nClaim your refund: http://govt.refund.taxes123.com\n\nWe appreciate your urgent attention to this matter.\n\nBest Regards,\nGovernment Tax Department",
+        "explicacao": "This is an easily identifiable phishing email, characterized by an obviously suspicious sender, exaggerated urgency, visible links, and direct threat. The email pretends to be from a government tax department, which is a common phishing scenario. The email attempts to create a sense of urgency and potential loss to lure the recipient into clicking the link, which is a common psychological trigger used in phishing attacks. The link is clearly suspicious and does not resemble any legitimate government URL.",
+        "nivel": "easy",
+        "categoria": "Government Impersonation",
+        "links": [
+          "http://govt.refund.taxes123.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 6.675172,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 5,
+      "user_context": "Crie um email de phishing simples fingindo ser de uma rede social alertando sobre atividade suspeita. O email deve ter urgência exagerada.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "johndoe123@gmail.com",
+        "remetente": "noreply@socialmedia123.com",
+        "assunto": "URGENTE!!! Atividade suspeita em sua conta!!!",
+        "conteudo": "Caro usuário,\n\nDetectamos atividade suspeita em sua conta. Por segurança, bloqueamos temporariamente o acesso à sua conta.\n\nClique no link abaixo para redefinir sua senha e recuperar o acesso à sua conta:\n\nhttp://socialmedia123.com/reset-password\n\nAgradecemos a sua colaboração.\n\nAtenciosamente,\nEquipe de Suporte",
+        "explicacao": "Este é um exemplo de um email de phishing de nível fácil. O remetente é genérico e não tem relação com a rede social legítima. O assunto do email contém urgência exagerada e o conteúdo do email pede ao usuário para clicar em um link suspeito para redefinir sua senha. Esse email não contém personalização e o domínio do link é visivelmente suspeito.",
+        "nivel": "facil",
+        "categoria": "rede social",
+        "links": [
+          "http://socialmedia123.com/reset-password"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 7.781402,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 6,
+      "user_context": "Crie um email de phishing básico fingindo ser de uma empresa de telefonia sobre fatura em atraso. Deve ter remetente claramente falso.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "john.doe@example.com",
+        "remetente": "noreply@telecom123.com",
+        "assunto": "URGENTE: Fatura Atrasada!!!",
+        "conteudo": "Caro cliente,\\n\\nPercebemos que sua fatura mais recente ainda não foi paga. É necessário efetuar o pagamento imediatamente para evitar a suspensão do serviço.\\n\\nClique aqui para pagar agora: http://bit.ly/fake-payment\\n\\nAtenciosamente,\\nEquipe Telecom123",
+        "explicacao": "Este email de phishing usa um remetente genérico e um assunto com urgência exagerada para atrair a atenção do receptor. O conteúdo do email é genérico e não personalizado, indicando que pode ser uma tentativa de phishing. Além disso, o link fornecido é um link encurtado, o que é muitas vezes um sinal de um email de phishing.",
+        "nivel": "fácil",
+        "categoria": "Fatura em atraso",
+        "links": [
+          "http://bit.ly/fake-payment"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 7.223652,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 7,
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco digital pedindo verificação de identidade. O email deve ter ameaças diretas.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "user123@gmail.com",
+        "remetente": "noreply@bank123.com",
+        "assunto": "URGENTE!!! Verificação de Identidade Necessária em sua Conta!",
+        "conteudo": "Prezado cliente,\n\nDetectamos atividades suspeitas em sua conta. Para garantir a segurança de seus fundos, solicitamos que você verifique sua identidade. Clique aqui para verificar agora.\n\nSe você não confirmar sua identidade nas próximas 24 horas, sua conta será permanentemente bloqueada!\n\nAtenciosamente,\nEquipe de suporte ao cliente",
+        "explicacao": "Este é um email de phishing fácil. O remetente possui um domínio genérico que não corresponde a um banco real. O assunto é escrito em letras maiúsculas para exagerar a urgência, e o corpo do email contém uma ameaça direta de bloqueio da conta. Além disso, o email solicita a verificação de identidade, o que é uma solicitação óbvia de informações sensíveis. Finalmente, o link para verificação é genérico e não personalizado para o destinatário.",
+        "nivel": "fácil",
+        "categoria": "Banco Digital",
+        "links": [
+          "http://bank123.com/verify"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 10.065991,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 8,
+      "user_context": "Crie um email de phishing básico fingindo ser de uma empresa de entrega sobre pacote retido. Deve ter erros de português evidentes.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "cliente123@gmail.com",
+        "remetente": "noreply@entregapacote.com",
+        "assunto": "URGENTE!! Ação Imediata Requerida: Pacote Retido!!",
+        "conteudo": "Prezado Cliente,\n\nNosso sistema detectou uma inconformidade com seu pacote e ele foi retido. Por favor, acesse o link abaixo para resolver a situação imediatamente.\n\nhttp://corrigir-problema.com\n\nAtenciosamente,\n\nEquipe de Entrega",
+        "explicacao": "Este email de phishing de nível fácil simula uma situação de pacote retido de uma empresa de entrega. O remetente é genérico e suspeito. O assunto tem erros de português e urgência exagerada. O conteúdo do email tem formatação inconsistente e solicitação óbvia de ação através de um link visivelmente suspeito.",
+        "nivel": "fácil",
+        "categoria": "phishing",
+        "links": [
+          "http://corrigir-problema.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 9.448395,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 9,
+      "user_context": "Crie um email de phishing simples fingindo ser de um provedor de email sobre caixa de entrada cheia. O email deve ser genérico sem personalização.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "user@example.com",
+        "remetente": "mailadmin@inboxsupport.com",
+        "assunto": "URGENTE!!! Ação necessária na sua caixa de entrada",
+        "conteudo": "Prezado Usuário,\n\nDetectamos que sua caixa de entrada está quase cheia. Para evitar a perda de emails importantes, pedimos que acesse o link abaixo e faça a limpeza necessária.\n\nClique aqui: http://inboxclean.com\n\nLembre-se, é de extrema importância realizar essa ação para garantir o pleno funcionamento do seu email.\n\nAtenciosamente,\nEquipe de Suporte",
+        "explicacao": "Este é um exemplo de um email de phishing de nível fácil. O remetente é suspeito ('mailadmin@inboxsupport.com'), o assunto é genérico e contém urgência exagerada ('URGENTE!!! Ação necessária na sua caixa de entrada'). O conteúdo do email não é personalizado (trata o destinatário como 'Usuário') e direciona o usuário a um link suspeito ('http://inboxclean.com').",
+        "nivel": "fácil",
+        "categoria": "Provedor de Email",
+        "links": [
+          "http://inboxclean.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 6.978471,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "fácil",
+      "sample_index": 10,
+      "user_context": "Crie um email de phishing básico fingindo ser de uma carteira digital sobre transação pendente. Deve ter links encurtados suspeitos.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "user@example.com",
+        "remetente": "noreply@wallet123.com",
+        "assunto": "URGENTE!!! Transação Pendente em sua Carteira Digital",
+        "conteudo": "Caro usuário,\n\nDetectamos uma transação pendente de $5000 em sua carteira digital. Para confirmar ou cancelar esta transação, você deve agir imediatamente clicando no link abaixo.\n\nLink: bit.ly/1234abcd\n\nPor favor, note que se você não confirmar ou cancelar esta transação dentro de 24 horas, sua carteira digital será bloqueada temporariamente por motivo de segurança.\n\nAgradecemos sua cooperação imediata.\n\nAtenciosamente,\nEquipe Wallet123",
+        "explicacao": "Este email é um exemplo de phishing de nível fácil. O remetente é claramente suspeito (wallet123.com), o assunto contém urgência exagerada e óbvia ('URGENTE!!!'), o conteúdo ameaça o receptor com bloqueio de conta se não agir rapidamente, e o link é visivelmente suspeito (bit.ly). A falta de personalização (tratamento genérico) também é um sinal comum de phishing.",
+        "nivel": "fácil",
+        "categoria": "Phishing",
+        "links": [
+          "bit.ly/1234abcd"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 8.001417,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 1,
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "João Silva",
+        "remetente": "suporte@tecnologia-empresa.com",
+        "assunto": "Notificação Importante: Atualize sua senha",
+        "conteudo": "Caro João Silva,\n\nComo parte de nossos contínuos esforços para proteger a segurança de nossos sistemas, estamos iniciando um processo de atualização de senhas. É crucial que você atualize sua senha imediatamente para evitar qualquer interrupção em seu acesso.\n\nPor favor, clique no link abaixo para iniciar o processo de atualização de senha:\n\nhttps://atualizarsenha.empresa.com\n\nAgradecemos a sua cooperação e compreensão.\n\nAtenciosamente,\nDepartamento de TI",
+        "explicacao": "Este é um exemplo de um email de phishing de nível médio. O remetente parece ser legítimo, mas uma análise mais cuidadosa revelaria que o domínio não é exatamente o mesmo da empresa. O assunto é relevante e profissional, sem erros óbvios de ortografia ou gramática. O conteúdo do email é bem formatado e parece ser de uma comunicação empresarial legítima. No entanto, a urgência da atualização de senha pode ser um sinal de alerta. O link para atualização de senha parece legítimo à primeira vista, mas novamente, uma análise mais cuidadosa revelaria que o domínio é ligeiramente diferente do domínio legítimo da empresa.",
+        "nivel": "Médio",
+        "categoria": "Phishing",
+        "links": [
+          "https://atualizarsenha.empresa.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 8.776159,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 2,
+      "user_context": "Crie um email de phishing como se fosse do RH da empresa para Ana Costa sobre atualização de dados bancários para depósito do 13º salário. Deve ter aparência corporativa.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Ana Costa",
+        "remetente": "rh@empresaxyz.com.br",
+        "assunto": "Atualização de Dados Bancários para Depósito do 13º Salário",
+        "conteudo": "Prezada Ana Costa, \n\n Esperamos que esteja bem. A empresa está preparando o depósito do 13º salário e para garantir que todos os colaboradores recebam corretamente, estamos realizando uma atualização dos dados bancários. \n\n Por favor, acesse o link a seguir para atualizar seus dados bancários: [www.empresaxyz.com.br/atualizacaodados] \n\n Agradecemos sua atenção e colaboração. \n\n Atenciosamente, \n\n Equipe de RH",
+        "explicacao": "Essa é uma tentativa mediana de phishing. O remetente tenta parecer legítimo, mas há uma pequena inconsistência no domínio do email. O assunto é plausível e a urgência é moderada, relacionada ao recebimento do 13º salário. O conteúdo do email é profissional e personalizado, dando uma aparência legítima. No entanto, a solicitação para clicar em um link para atualizar dados bancários é uma indicação de phishing.",
+        "nivel": "médio",
+        "categoria": "Phishing",
+        "links": [
+          "www.empresaxyz.com.br/atualizacaodados"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 8.344818,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 3,
+      "user_context": "Crie um email de phishing como se fosse do suporte técnico da Microsoft para Carlos Mendes sobre licença do Office expirando. Deve parecer legítimo com sutis indicadores.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Carlos Mendes",
+        "remetente": "suporte@microsoft-office.com",
+        "assunto": "Sua licença do Microsoft Office está prestes a expirar",
+        "conteudo": "Prezado Carlos Mendes,\n\nEstamos entrando em contato para informar que sua licença do Microsoft Office está prestes a expirar. Para continuar a desfrutar de todos os benefícios e recursos, é necessário que você renove sua licença.\n\nCaso contrário, você perderá o acesso a todos os seus documentos e arquivos armazenados no Office 365 após a data de expiração.\n\nPor favor, clique no link abaixo para renovar sua licença:\nhttp://microsoft-office.com/renew\n\nSe você precisa de mais informações ou tem alguma dúvida, não hesite em entrar em contato.\n\nAtenciosamente,\nEquipe de Suporte da Microsoft",
+        "explicacao": "Este é um exemplo de um email de phishing de dificuldade média. O remetente parece legítimo à primeira vista, mas a URL do email é suspeita (microsoft-office.com em vez de microsoft.com). O assunto é plausível e a urgência é moderada. O link parece legítimo à primeira vista, mas não é o domínio oficial da Microsoft. O email é personalizado com o nome do destinatário. No entanto, a ameaça de perder o acesso a todos os documentos e arquivos armazenados é um indicador de suspeita.",
+        "nivel": "Médio",
+        "categoria": "Suporte Técnico",
+        "links": [
+          "http://microsoft-office.com/renew"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 10.581694,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 4,
+      "user_context": "Crie um email de phishing como se fosse do departamento financeiro para Roberto Lima sobre aprovação de reembolso pendente. O email deve ter formato empresarial.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Roberto Lima",
+        "remetente": "financa@orgcompany.com",
+        "assunto": "Reembolso Pendente Aprovado - Ação Necessária",
+        "conteudo": "Caro Roberto Lima,\\n\\nEsperamos que esteja bem.\\n\\nTemos boas notícias! Sua solicitação de reembolso pendente foi aprovada. Para finalizar o processo e receber seu reembolso, você precisa confirmar seus dados bancários.\\n\\nPor favor, acesse o link abaixo e insira suas informações:\\n\\nhttp://orgcompany-finance.com/verify\\n\\nAgradecemos sua atenção e cooperação.\\n\\nAtenciosamente,\\nEquipe de Finanças da OrgCompany",
+        "explicacao": "Este é um e-mail de phishing de nível médio que usa uma mistura de informações verdadeiras e falsas e solicitação indireta de ação. O remetente é parcialmente convincente, mas a URL do link é suspeita. O e-mail é formatado de maneira profissional e usa a personalização básica do nome do destinatário. O assunto é plausível mas com alguns indicadores de suspeita. ",
+        "nivel": "médio",
+        "categoria": "Phishing Financeiro",
+        "links": [
+          "http://orgcompany-finance.com/verify"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 8.946055,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 5,
+      "user_context": "Crie um email de phishing como se fosse do LinkedIn para Paula Ferreira sobre nova vaga compatível com seu perfil. Deve ter design similar ao original.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Paula Ferreira",
+        "remetente": "linkedIn.jobs@career.com",
+        "assunto": "Nova vaga compatível com seu perfil - Ação necessária",
+        "conteudo": "Olá Paula,\n\nEncontramos uma vaga que parece ser uma excelente correspondência para suas habilidades e experiência no LinkedIn. A vaga é para o cargo de Gerente de Projetos em uma empresa de renome com excelente pacote de benefícios.\n\nPara visualizar os detalhes completos da vaga e se candidatar, por favor, clique no link abaixo:\n\n[http://linkedin.jobs.com/verify?userid=12345]\n\nEsta oportunidade é limitada e o recrutador está procurando preencher a vaga rapidamente. Portanto, recomendamos que você aja imediatamente.\n\nAtenciosamente,\nEquipe LinkedIn Jobs",
+        "explicacao": "Este é um email de phishing de nível médio. O remetente parece legítimo à primeira vista, mas uma análise mais detalhada revela inconsistências (o LinkedIn não costuma usar domínios de terceiros para comunicações de emprego). O assunto é plausível, mas a urgência é um indicador de suspeita. O conteúdo é personalizado para o destinatário, Paula, e mistura informações verdadeiras com falsas. O link parece legítimo à primeira vista, mas não é o domínio oficial do LinkedIn. A solicitação de ação é indireta, pedindo ao destinatário para verificar uma vaga de emprego.",
+        "nivel": "médio",
+        "categoria": "phishing",
+        "links": [
+          "http://linkedin.jobs.com/verify?userid=12345"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 9.865348,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 6,
+      "user_context": "Crie um email de phishing como se fosse do Dropbox para Marcos Oliveira sobre compartilhamento de arquivo importante. Deve ter branding parcialmente convincente.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Marcos Oliveira",
+        "remetente": "noreply@dropbbox.com",
+        "assunto": "Compartilhamento de arquivo importante no Dropbox",
+        "conteudo": "Olá Marcos Oliveira,\n\nVocê recebeu um arquivo importante compartilhado no Dropbox. O arquivo parece estar associado a um dos seus projetos recentes. Recomendamos que você verifique o arquivo o mais rápido possível para evitar qualquer atraso no seu trabalho.\n\nVocê pode acessar o arquivo clicando aqui: [www.dropbbox.com/secure-access]\n\nLembre-se, nunca compartilhe suas credenciais do Dropbox com ninguém. A segurança dos seus dados é a nossa prioridade.\n\nAtenciosamente,\nEquipe Dropbox",
+        "explicacao": "Este é um email de phishing de nível médio. O remetente parece legítimo à primeira vista, mas há uma pequena inconsistência (dropbbox em vez de dropbox). O assunto do email é plausível e não tem erros óbvios. O conteúdo do email é profissional e contém uma personalização básica. O link parece legítimo à primeira vista, mas é falso. A solicitação de ação é indireta, pedindo ao destinatário para verificar um arquivo.",
+        "nivel": "médio",
+        "categoria": "phishing",
+        "links": [
+          "www.dropbbox.com/secure-access"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 11.959321,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 7,
+      "user_context": "Crie um email de phishing como se fosse do departamento jurídico para Fernanda Alves sobre documento para assinatura eletrônica. Deve ter tom profissional.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Fernanda Alves",
+        "remetente": "departamento.juridico@empresaltda.net",
+        "assunto": "Re: Documento Importante para Assinatura Eletrônica",
+        "conteudo": "Olá Fernanda,\n\nEspero que esteja bem.\n\nEstamos em processo de atualização dos nossos registros e notamos que há um documento pendente para sua assinatura. O documento é crucial para a continuidade de suas atividades na empresa. \n\nPor favor, clique [aqui](http://bit.ly/3d55Jkl) para acessar e assinar o documento. Sua ação imediata é apreciada.\n\nSe você tiver alguma dúvida, sinta-se à vontade para responder a este e-mail.\n\nAtenciosamente,\nDepartamento Jurídico",
+        "explicacao": "Este é um e-mail de phishing de nível médio, simulando ser do departamento jurídico de uma empresa. O remetente tem algum grau de autenticidade, mas o domínio '.net' em vez de '.com' pode levantar suspeitas. O assunto é plausível, mas a urgência moderada pode levantar alguma suspeita. O link, embora encurtado, poderia parecer legítimo à primeira vista. A formatação do e-mail é profissional e o nome do receptor é usado para personalização.",
+        "nivel": "médio",
+        "categoria": "Phishing",
+        "links": [
+          "http://bit.ly/3d55Jkl"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 7.8238,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 8,
+      "user_context": "Crie um email de phishing como se fosse do Google Workspace para Ricardo Santos sobre verificação de segurança obrigatória. Deve ter aparência autêntica.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Ricardo Santos",
+        "remetente": "noreply@google-security.com",
+        "assunto": "Verificação de segurança Google Workspace",
+        "conteudo": "Prezado Ricardo Santos, \n\nEstamos realizando uma verificação de segurança obrigatória em todas as contas do Google Workspace para garantir a proteção de seus dados. \n\nPedimos que você verifique sua conta o quanto antes para evitar qualquer inconveniência. Por favor, clique no link abaixo para iniciar o processo de verificação. \n\n[Verificar Conta Google Workspace](http://workspace.google.verify-account.com) \n\nAgradecemos sua atenção e cooperação. \n\nAtenciosamente, \nEquipe de Segurança do Google Workspace",
+        "explicacao": "Este é um email de phishing que tenta se passar por uma comunicação oficial do Google Workspace. Utiliza a técnica de urgência moderada para motivar o usuário a clicar no link, que parece legítimo à primeira vista, mas na realidade é um domínio falso. O email é personalizado com o nome do destinatário, aumentando sua aparente autenticidade. O objetivo é fazer com que o usuário clique no link e insira suas credenciais de login, que então seriam capturadas pelo atacante.",
+        "nivel": "médio",
+        "categoria": "phishing",
+        "links": [
+          "http://workspace.google.verify-account.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 9.35257,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 9,
+      "user_context": "Crie um email de phishing como se fosse do fornecedor habitual para Juliana Pereira sobre nova forma de pagamento. Deve usar informações parcialmente corretas.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Juliana Pereira",
+        "remetente": "contato@pagamentofacil.com",
+        "assunto": "Atualização Importante: Nova Forma de Pagamento",
+        "conteudo": "Olá Juliana Pereira,\n\nEsperamos que esteja bem. Estamos atualizando nosso sistema de pagamento e gostaríamos de informá-la sobre as novas opções de pagamento disponíveis para você.\n\nAgora, além de cartões de crédito e débito, estamos oferecendo a opção de pagamento via Bitcoin. Esta opção permitirá a você realizar pagamentos instantâneos sem taxas extras.\n\nPedimos que você atualize suas preferências de pagamento em nosso portal. Clique aqui para atualizar.\n\nSe você tiver qualquer dúvida, por favor, não hesite em responder a este email ou entrar em contato com nosso suporte ao cliente.\n\nAtenciosamente,\nEquipe Pagamento Fácil",
+        "explicacao": "Este email de phishing tenta enganar o destinatário fazendo-o acreditar que é de um fornecedor habitual e solicitando que atualize suas preferências de pagamento, potencialmente levando-o a fornecer informações confidenciais. O remetente parece legítimo à primeira vista, mas contém pequenas inconsistências. O assunto é plausível, mas a opção de pagamento em Bitcoin pode ser um indicador de suspeita, considerando que é uma opção raramente oferecida por fornecedores comuns. O link fornecido parece legítimo, mas leva ao site do invasor. A formatação do email é profissional e semelhante a comunicações empresariais legítimas, e o email é personalizado com o nome do destinatário.",
+        "nivel": "médio",
+        "categoria": "Phishing",
+        "links": [
+          "www.pagamentofacil.com/atualizarpreferencias"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 12.919827,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "médio",
+      "sample_index": 10,
+      "user_context": "Crie um email de phishing como se fosse do banco corporativo para Lucas Martins sobre nova política de segurança. Deve ter elementos visuais profissionais.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Lucas Martins",
+        "remetente": "security@yourcorpbank.com",
+        "assunto": "Atualização Importante da Política de Segurança",
+        "conteudo": "Prezado Lucas Martins,\n\nEsperamos que esteja bem.\n\nComo parte de nosso compromisso contínuo com a segurança dos clientes, estamos implementando uma nova política de segurança que exige a reconfirmação dos dados de acesso de todos os nossos clientes.\n\nPeço que acesse o link abaixo para confirmar seus dados e evitar qualquer interrupção no serviço bancário.\n\n[www.yourcorpbank-security.com/reconfirm]\n\nAgradecemos sua atenção imediata a este assunto.\n\nAtenciosamente,\nEquipe de Segurança do YourCorpBank",
+        "explicacao": "Este email foi projetado para induzir o destinatário a clicar no link fornecido, que parece legítimo à primeira vista, mas é realmente um site falso projetado para coletar informações de login. O email usa uma mistura de verdade e falsidade, incorporando um motivo plausível (política de segurança atualizada) para criar um senso de urgência. O remetente parece parcialmente convincente, mas a inconsistência (domínio do link suspeito) pode ser notada por um olhar atento.",
+        "nivel": "médio",
+        "categoria": "Phishing de Segurança",
+        "links": [
+          "www.yourcorpbank-security.com/reconfirm"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 9.759047,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 1,
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Pedro Oliveira",
+        "remetente": "Maria Santos <maria.santos@financas-empresa.com>",
+        "assunto": "Pedido de Transferência Urgente - Projeto Expansão 2025",
+        "conteudo": "Olá Pedro,\n\nEspero que esta mensagem o encontre bem. Estou escrevendo para solicitar sua atenção para uma questão urgente relacionada ao Projeto Expansão 2025.\n\nPara garantir a continuidade do projeto, precisamos realizar uma transferência financeira. Eu estaria lidando com isso pessoalmente, mas estou em uma conferência fora da cidade e estou com problemas para acessar o sistema bancário devido a restrições de rede.\n\nPor favor, acesse o sistema bancário através do link abaixo e realize a transferência para a conta fornecida. A quantia é de R$ 125.000,00.\n\nLink para o sistema bancário: https://www.bancoseguro-fiancas-empresa.com\n\nDados da conta:\nBanco: Banco Seguro\nAgência: 1234\nConta: 56789\n\nAgradeço antecipadamente sua ajuda com esta questão. Por favor, confirme a transferência assim que for concluída.\n\nAtenciosamente,\nMaria Santos\nDiretora Financeira",
+        "explicacao": "Este email usa várias técnicas de phishing e gatilhos psicológicos. O remetente parece legítimo e a urgência é justificada com um contexto empresarial realista. O email é altamente personalizado, incluindo o nome do destinatário, seu cargo e um projeto específico. O link para o sistema bancário parece legítimo à primeira vista, mas é uma URL typosquatting. O call-to-action é indireto, solicitando que o destinatário realize uma ação específica, mas não pedindo diretamente informações sensíveis.",
+        "nivel": "difícil",
+        "categoria": "spear phishing",
+        "links": [
+          "https://www.bancoseguro-fiancas-empresa.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 12.515434,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 2,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse do CEO Antonio Rodrigues para a controller Beatriz Lima sobre aprovação emergencial de budget para aquisição estratégica. Deve ter contexto empresarial realista.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Beatriz Lima",
+        "remetente": "antonio.rodrigues@empresa.com",
+        "assunto": "Aprovação de Budget - Aquisição Estratégica",
+        "conteudo": "Olá Beatriz, \n\nEspero que esteja bem. Venho por este meio solicitar sua atenção para uma aquisição estratégica que precisamos fazer em caráter emergencial. Em conversa com o time de estratégia, identificamos uma oportunidade de investimento que pode nos posicionar de maneira única no mercado, gerando uma vantagem competitiva significativa. \n\nO investimento requer uma alocação adicional de budget que precisamos aprovar imediatamente para não perdermos a janela de oportunidade. Peço que você acesse nosso portal financeiro pelo link abaixo e aprove a alocação proposta. \n\nLink: www.empresafinanceira.com/aprovacao\n\nPor favor, faça isso o mais rápido possível. Sua aprovação é crucial para que possamos prosseguir com a aquisição. \n\nAgradeço antecipadamente sua cooperação e estou à disposição para quaisquer esclarecimentos. \n\nAtenciosamente, \nAntonio Rodrigues \nCEO",
+        "explicacao": "Este email utiliza a técnica de spear phishing, visando especificamente a Beatriz Lima, controller da empresa. O remetente parece legítimo, sendo o CEO Antonio Rodrigues, e o assunto é relevante e urgente, referindo-se a uma aquisição estratégica. O conteúdo do email é profissional e realista, visando persuadir a vítima a clicar no link para aprovar um budget adicional. O link parece legítimo, mas é um site de phishing que imita o portal financeiro da empresa. A urgência e a importância da ação solicitada são usadas como gatilhos psicológicos para persuadir a vítima a agir rapidamente, sem verificar a legitimidade do email e do link.",
+        "nivel": "dificil",
+        "categoria": "spear",
+        "links": [
+          "www.empresafinanceira.com/aprovacao"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 13.307812,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 3,
+      "user_context": "Crie um email de spear phishing avançado como se fosse do diretor de operações Felipe Souza para o gerente de compras Eduardo Nunes sobre urgência em contrato com fornecedor internacional. Deve ter detalhes específicos convincentes.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Eduardo Nunes",
+        "remetente": "Felipe Souza <felipe.souza@empresa.com.br>",
+        "assunto": "Re: Contrato do Fornecedor Internacional",
+        "conteudo": "Olá Eduardo,\n\nEspero que esteja tudo bem.\n\nEstive em reunião com a equipe de Finanças e eles me alertaram sobre uma possível inconsistência no contrato com nosso fornecedor internacional. Como você está diretamente envolvido com este contrato, achei apropriado trazer isso à sua atenção.\n\nEstou anexando o link para o contrato em questão para sua revisão. Acredito que o problema está localizado na cláusula 7.1.3. Por favor, dê uma olhada assim que possível e me dê um retorno.\n\n[http://www.empresa-fornecedor.com.br/contrato-77493](http://www.empresa-fornecedoor.com.br/contrato-77493)\n\nAgradeço antecipadamente a sua atenção neste assunto.\n\nAtenciosamente,\nFelipe Souza\nDiretor de Operações",
+        "explicacao": "Este é um exemplo de email de spear phishing que explora a autoridade do remetente (Felipe Souza, Diretor de Operações) e a urgência de um problema no contrato com um fornecedor internacional. O link fornecido leva a um domínio semelhante ao original, mas com um erro de digitação sutil ('fornecedoor' em vez de 'fornecedor') que pode passar despercebido. O email é altamente personalizado e contextually relevante, tornando-o um exemplo de phishing de nível difícil.",
+        "nivel": "difícil",
+        "categoria": "spear phishing",
+        "links": [
+          "http://www.empresa-fornecedoor.com.br/contrato-77493"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 10.151196,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 4,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse da head de RH Carolina Mendes para o analista financeiro Gustavo Almeida sobre bônus confidencial que requer dados bancários atualizados. Deve explorar autoridade.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Gustavo Almeida",
+        "remetente": "Carolina Mendes <carolina.mendes@rh-empresa.com>",
+        "assunto": "Atualização de Dados Bancários para Processamento de Bônus Confidencial",
+        "conteudo": "Olá Gustavo,\n\nEspero que esteja bem. Após a revisão anual, o conselho decidiu premiar você com um bônus confidencial devido ao seu excepcional desempenho e contribuição para a equipe de finanças. Este bônus será adicionado ao seu próximo pagamento.\n\nPara garantir que não haja atrasos no processamento, precisamos que você atualize seus dados bancários o mais rápido possível. Por favor, clique [aqui](http://rh-empresa.com/atualizacao-de-dados-bancarios) para atualizar suas informações.\n\nSe você tiver alguma dúvida ou preocupação, por favor, não hesite em me contatar diretamente.\n\nAtenciosamente,\n\nCarolina Mendes\nHead de Recursos Humanos",
+        "explicacao": "Este é um exemplo de spear phishing com nível de dificuldade 'difícil'. O remetente é altamente convincente, parecendo ser da head de RH da empresa. O assunto é relevante e atraente para o receptor, criando uma sensação de urgência sutil. O conteúdo é personalizado e utiliza uma linguagem profissional, imitando uma comunicação oficial da empresa. O link malicioso é disfarçado para parecer um domínio legítimo da empresa. A solicitação de atualização de dados bancários é apresentada como uma ação necessária para receber um bônus, explorando o gatilho psicológico da ganância.",
+        "nivel": "difícil",
+        "categoria": "spear phishing",
+        "links": [
+          "http://rh-empresa.com/atualizacao-de-dados-bancarios"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 12.365044,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 5,
+      "user_context": "Crie um email de spear phishing avançado como se fosse do CTO Ricardo Ferreira para a desenvolvedora Mariana Costa sobre acesso urgente ao repositório do cliente VIP. Deve ter terminologia técnica correta.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Mariana Costa",
+        "remetente": "Ricardo Ferreira <ricardo.ferreira@company.com>",
+        "assunto": "Acesso urgente ao repositório do cliente VIP",
+        "conteudo": "Olá Mariana,\n\nEspero que esta mensagem te encontre bem. Estou escrevendo para solicitar sua atenção urgente em uma questão de alta prioridade. O cliente VIP fez um pedido de última hora para algumas modificações em sua plataforma e precisamos agir rapidamente para atender às suas expectativas.\n\nPor favor, acesse o repositório de código em (https://company-repo.com/urgent-access) e faça as alterações necessárias o mais rápido possível. Seu acesso já foi autorizado, você só precisa entrar com suas credenciais.\n\nLembre-se, a satisfação do cliente é nossa prioridade e sua colaboração é crucial para o sucesso deste projeto.\n\nObrigado pela sua cooperação.\n\nRicardo Ferreira\nCTO",
+        "explicacao": "Este é um email de spear phishing avançado que usa a autoridade do CTO e a urgência de uma demanda do cliente VIP para persuadir o receptor a clicar no link e fornecer suas credenciais. O link para o repositório de código é um domínio similar ao original, uma técnica conhecida como typosquatting.",
+        "nivel": "difícil",
+        "categoria": "Spear Phishing",
+        "links": [
+          "https://company-repo.com/urgent-access"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 10.208781,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 6,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse do partner do escritório de advocacia para o cliente corporativo sobre acordo judicial confidencial. Deve ter tom formal adequado.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "john.doe@corporateclient.com",
+        "remetente": "peter.smith@lawfirm-partners.com",
+        "assunto": "Confidential: Proposed Settlement Agreement for Case #12345",
+        "conteudo": "Dear Mr. Doe,\n\nI hope this email finds you well. As per our previous discussions regarding case #12345, I am pleased to inform you that we have received a proposed settlement agreement from the opposing party.\n\nFor confidentiality and security reasons, we have digitized the document and uploaded it to our secure server. You can access it using the following link: [https://lawfirm-partners.com/secure/document12345](http://lawfirm-parters.com/secure/doc12345)\n\nGiven the sensitive nature of this case, I would appreciate it if you could review the proposal at your earliest convenience and provide your feedback. Please note that we need to respond to the opposing party by end of this week.\n\nLooking forward to your response.\n\nBest Regards,\nPeter Smith\nSenior Partner, Law Firm Partners",
+        "explicacao": "This spear phishing email is designed to appear as if it's coming from a partner at a law firm. The recipient is addressed directly and the subject of the email is relevant and urgent. The link provided appears to be legitimate, but it actually redirects to a slightly different domain (typosquatting technique). The overall tone and content of the email are designed to be convincing and to push the recipient to act quickly due to the perceived urgency and importance of the matter.",
+        "nivel": "difficult",
+        "categoria": "Spear Phishing",
+        "links": [
+          "http://lawfirm-parters.com/secure/doc12345"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 9.752056,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 7,
+      "user_context": "Crie um email de spear phishing avançado como se fosse do gerente de banco private para cliente de alta renda sobre oportunidade exclusiva de investimento. Deve ter personalização avançada.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "John Doe",
+        "remetente": "Richard.Smith@privatebank.com",
+        "assunto": "Oportunidade Exclusiva de Investimento - Green Energy Partnership",
+        "conteudo": "Olá John,\n\nEspero que esteja bem. Queria trazer ao seu conhecimento uma oportunidade de investimento exclusiva que surgiu recentemente. Temos uma oferta única de parceria com a SunPower, uma das principais empresas de energia renovável. Esta é uma grande chance de diversificar ainda mais sua carteira de investimentos com um alto potencial de retorno.\n\nEu preparei um briefing detalhado sobre esta oportunidade que você pode acessar clicando aqui [http://privatebank-invest.com/green-energy-briefing]. Eu realmente acredito que você vai achar este material muito informativo e esclarecedor.\n\nPor favor, dê uma olhada e me avise se tiver alguma dúvida. Estou disponível para uma chamada ou reunião a qualquer momento que for conveniente para você.\n\nAtenciosamente,\nRichard Smith\nGerente Sênior - Private Banking",
+        "explicacao": "Este email de phishing é altamente convincente com personalização avançada, remetente legítimo, assunto relevante e links camuflados. A urgência é sutilmente criada pela natureza 'exclusiva' da oportunidade de investimento. O call-to-action é sutil e indireto, encorajando o receptor a clicar no link para obter mais informações. Os gatilhos psicológicos utilizados incluem a autoridade (gerente sênior de banco), a escassez (oportunidade exclusiva) e a reciprocidade (oferecendo ajuda e disponibilidade).",
+        "nivel": "difícil",
+        "categoria": "spear phishing",
+        "links": [
+          "http://privatebank-invest.com/green-energy-briefing"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 11.923699,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 8,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse do diretor comercial Henrique Bastos para o vendedor sênior Amanda Reis sobre comissão extraordinária do trimestre. Deve ter contexto temporal relevante.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "Amanda Reis",
+        "remetente": "Henrique Bastos <henrique.bastos@empresaX.com>",
+        "assunto": "Revisão Extraordinária de Comissão do Trimestre",
+        "conteudo": "Olá Amanda, \n\nEspero que esteja bem. Tenho acompanhado de perto seu desempenho excepcional neste trimestre e estou realmente impressionado com sua dedicação e esforço. \n\nApós uma reunião com a diretoria, decidimos que você merece uma revisão extraordinária de sua comissão de vendas. Para entender melhor como isso afetará seus ganhos, preparei um documento detalhado com os cálculos apropriados. \n\nPor favor, acesse este link: http://www.empresaX-comissão.com para visualizar o documento. É necessário que você faça login com sua conta de email corporativo para acessar o documento. \n\nCaso tenha alguma dúvida, não hesite em me contactar. \n\nAtenciosamente, \n\nHenrique Bastos \nDiretor Comercial",
+        "explicacao": "Este email de phishing foi projetado para ser altamente convincente, com o remetente e o assunto sendo relevantes e específicos para o receptor. O conteúdo do email é profissional e personalizado, mencionando o desempenho do receptor e uma potencial revisão de comissão, o que é um gatilho psicológico poderoso. O link fornecido é uma tentativa de typosquatting, imitando o domínio original da empresa. O objetivo é obter as credenciais de login da vítima quando ela tentar acessar o documento mencionado.",
+        "nivel": "difícil",
+        "categoria": "spear phishing",
+        "links": [
+          "http://www.empresaX-comissão.com"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 9.864803,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 9,
+      "user_context": "Crie um email de spear phishing avançado como se fosse do auditor externo para o controller sobre documentação urgente para fechamento fiscal. Deve explorar compliance.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "controller@company.com",
+        "remetente": "external.auditor@auditingfirms.com",
+        "assunto": "Documentação urgente requerida para fechamento fiscal",
+        "conteudo": "Prezado Controller,\n\nEspero que esteja bem. Conforme nossa conversa anterior, estou enviando este email para solicitar os documentos necessários para o fechamento fiscal do último trimestre. Compreendo que este é um período ocupado para todos nós, e sua cooperação seria muito apreciada para garantir uma conclusão suave e oportuna da auditoria.\n\nPor favor, encontre o link abaixo para a lista de documentos que precisamos:\n\nhttp://www.auditingfirms.com/document-request\n\nPor favor, note que esta é uma questão urgente e seu atraso pode resultar em consequências legais. Agradecemos sua atenção imediata a este assunto.\n\nAtenciosamente,\n\n[Nome do Auditor]\nAuditor Externo\n\nPS: Este email é confidencial e pretendido apenas para o destinatário mencionado acima. Se você recebeu este email por engano, por favor, informe-nos imediatamente e apague-o.",
+        "explicacao": "Este é um exemplo de um email de spear phishing avançado que simula uma comunicação legítima de um auditor externo para o controlador de uma empresa. Ele explora a urgência e a autoridade para induzir o destinatário a clicar em um link, que poderia ser usado para roubar informações ou infectar o sistema do destinatário com malware. O remetente, o assunto e o conteúdo do email são todos projetados para parecer autênticos e convencer o destinatário de que o email é legítimo.",
+        "nivel": "difícil",
+        "categoria": "Spear Phishing",
+        "links": [
+          "http://www.auditingfirms.com/document-request"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 17.758945,
+      "error": null
+    },
+    {
+      "condition": "no_rag",
+      "difficulty": "difícil",
+      "sample_index": 10,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse do board member para o CFO sobre due diligence confidencial de M&A. Deve ter linguagem executiva autêntica.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {
+        "receptor": "CFO@targetcompany.com",
+        "remetente": "boardmember@targetcompany.com",
+        "assunto": "Due Diligence Confidential - M&A Proposal",
+        "conteudo": "Dear [CFO's First Name],\n\nI hope this email finds you well.\n\nAs you might be aware, we've been exploring potential growth opportunities for [Company Name]. We have identified a promising prospect for a merger and acquisition (M&A) deal. However, before progressing further, we need to conduct a comprehensive due diligence process. This is a confidential matter and we would appreciate your discretion in this regard.\n\nI need you to review the attached financial and strategic analysis. Please download the document via this secure link [URL disguised as legitimate company document sharing link].\n\nYour insights will be crucial to our decision-making process. We request you to review and share your feedback by end of this week.\n\nThank you for your attention to this matter.\n\nBest Regards,\n[Board Member's Full Name]\n[Board Member's Title]",
+        "explicacao": "This is a sophisticated spear phishing email. It uses a highly convincing sender's address, a relevant subject line, and a well-justified sense of urgency. The email is professionally formatted and personalized with the recipient's name, role, and specific company details. It also includes a disguised malicious link, camouflaged as a secure company document sharing link. The call-to-action is subtly inserted into the text requesting the recipient to review a document. This email exploits the psychological principle of authority, where the recipient is likely to follow instructions coming from a board member.",
+        "nivel": "hard",
+        "categoria": "spear phishing",
+        "links": [
+          "URL disguised as legitimate company document sharing link"
+        ]
+      },
+      "ragas_scores": {},
+      "execution_time": 9.39368,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 1,
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco genérico pedindo para o usuário atualizar seus dados cadastrais. O email deve ter erros óbvios e ser facilmente identificável como fraude.",
+      "search_query": "Simple phishing techniques using generic bank impersonation to request user data update",
+      "generation_context": "Create a simple phishing email pretending to be from a generic bank asking the user to update their registration data. The email should have obvious errors and be easily identifiable as fraud.",
+      "generated_email": {
+        "receptor": "client@bank.com",
+        "remetente": "noreply@bank123.com",
+        "assunto": "URGENTE!!! Atualize seus dados de cadastro",
+        "conteudo": "Estimado cliente, \n\nDetectamos algumas inconsistências em seu cadastro. Pedimos que atualize seus dados imediatamente para evitar o bloqueio da sua conta. \n\nClique aqui para atualizar: http://bank123-update.com \n\nAtenciosamente, \nEquipe Bank123",
+        "explicacao": "Este é um exemplo de phishing fácil. O remetente é claramente suspeito (noreply@bank123.com ao invés de um domínio do banco legítimo). O assunto do email contém uma urgência exagerada ('URGENTE!!!'). O conteúdo do email contém uma ameaça direta (bloqueio da conta) e solicita a ação de atualizar informações sensíveis. O link fornecido é visivelmente suspeito (bank123-update.com), não correspondendo a um domínio legítimo do banco.",
+        "nivel": "Fácil",
+        "categoria": "Impersonação de Banco",
+        "links": [
+          "http://bank123-update.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.509834463142225
+      },
+      "execution_time": 78.499218,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 2,
+      "user_context": "Crie um email de phishing básico fingindo ser de uma loja online genérica informando sobre uma compra não reconhecida. Deve ter erros gramaticais evidentes.",
+      "search_query": "Basic phishing techniques in the context of unrecognized online shopping transactions with evident grammatical errors",
+      "generation_context": "Create a basic phishing email pretending to be from a generic online store informing about an unrecognized purchase. It should have evident grammatical errors.",
+      "generated_email": {
+        "receptor": "user@example.com",
+        "remetente": "support@onlinestore123.com",
+        "assunto": "URGENTE!!! Non-recogized purchese on your accaunt",
+        "conteudo": "Dear Costumer, \n\nWe hace detected an unautorized purchase of $999.99 on your accaunt. If you did not make this purchese, click the link belo to cancel imediately. \n\nhttp://bit.ly/12345 \n\nThank you for your atention! \n\nSupport Teem",
+        "explicacao": "This email is an example of a basic phishing attack, characterized by evident grammatical errors, an urgent tone demanding immediate action, and a suspicious link. The sender address doesn't match the typical structure of a legitimate online store, and the content lacks personalization, indicating that it was sent indiscriminately.",
+        "nivel": "easy",
+        "categoria": "Email Phishing",
+        "links": [
+          "http://bit.ly/12345"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.3684210526315789,
+        "response_relevancy": 0.4884374580456954
+      },
+      "execution_time": 73.382157,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 3,
+      "user_context": "Crie um email de phishing simples fingindo ser de um serviço de streaming pedindo atualização de pagamento. O email deve ter formatação amadora.",
+      "search_query": "Simple phishing techniques for impersonating streaming service providers requesting payment updates",
+      "generation_context": "Create a simple phishing email pretending to be from a streaming service asking for payment update. The email should have amateur formatting.",
+      "generated_email": {
+        "receptor": "john.doe@example.com",
+        "remetente": "streaming_service123@tv.com",
+        "assunto": "URGENTE: Seu pagamento falhou!!!",
+        "conteudo": "Caro usuário,\n\nHouve um problema com o seu método de pagamento atual e precisamos que você atualize seus detalhes de pagamento imediatamente para continuar a desfrutar de nossos serviços de streaming. Clique no link abaixo para atualizar seu método de pagamento.\n\nhttp://updatepayment.streamingservice123.com \n\nAgradecemos a sua cooperação imediata.\n\nAtenciosamente,\nStreaming Service 123",
+        "explicacao": "Este é um exemplo de um email de phishing de nível fácil. O remetente é suspeito e não combina com o nome da suposta empresa. O assunto do email é urgente e exagerado, o que é típico de uma tentativa de phishing. O link fornecido é visivelmente suspeito e não coincide com um URL de uma empresa legítima. Além disso, o email solicita diretamente que o receptor atualize suas informações de pagamento, o que é um indicador claro de phishing.",
+        "nivel": "Fácil",
+        "categoria": "Phishing Deceptivo",
+        "links": [
+          "http://updatepayment.streamingservice123.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.4800558336510469
+      },
+      "execution_time": 89.906608,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 4,
+      "user_context": "Crie um email de phishing básico fingindo ser do governo sobre restituição de imposto. Deve ter links suspeitos óbvios.",
+      "search_query": "Basic phishing techniques pretending to be government communication about tax refunds with obvious suspicious links.",
+      "generation_context": "Create a basic phishing email pretending to be from the government about tax refunds. It should contain obvious suspicious links.",
+      "generated_email": {
+        "receptor": "John Doe",
+        "remetente": "noreply@govtaxrefund.com",
+        "assunto": "URGENTE: Você tem um reembolso de impostos pendente",
+        "conteudo": "Prezado Cidadão,\n\nVocê tem um reembolso de impostos pendente de $5.000. Para receber este reembolso, clique no link abaixo e preencha o formulário com suas informações pessoais e bancárias.\n\nAtenciosamente,\nEquipe de Reembolso de Impostos\n\nP.S.: Este é um email automático, por favor não responda.",
+        "explicacao": "Este email usa táticas de phishing de nível fácil. O remetente é claramente suspeito e não é um endereço de email do governo legítimo. O assunto do email cria uma sensação de urgência para que o destinatário aja imediatamente. Além disso, o conteúdo do email solicita informações pessoais e bancárias, o que é uma bandeira vermelha para phishing.",
+        "nivel": "Fácil",
+        "categoria": "Phishing",
+        "links": [
+          "http://www.getyourtaxrefund.com",
+          "http://www.filloutyourinfo.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.47807402953912065
+      },
+      "execution_time": 71.977912,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 5,
+      "user_context": "Crie um email de phishing simples fingindo ser de uma rede social alertando sobre atividade suspeita. O email deve ter urgência exagerada.",
+      "search_query": "Simple phishing techniques using social media platforms to create a sense of urgency",
+      "generation_context": "Create a simple phishing email pretending to be from a social media network warning about suspicious activity. The email should have exaggerated urgency.",
+      "generated_email": {
+        "receptor": "user@example.com",
+        "remetente": "noreply@socialmedia123.com",
+        "assunto": "URGENTE!!! Atividade suspeita na sua conta!",
+        "conteudo": "Caro usuário,\n\nDetectamos atividade suspeita na sua conta de rede social. É extremamente urgente que você acesse sua conta imediatamente para verificar sua identidade.\n\nClique aqui [http://bit.ly/1234Link] para verificar sua conta.\n\nSe você não verificar sua conta agora, seu acesso será restrito permanentemente.\n\nObrigado,\nEquipe de Suporte",
+        "explicacao": "Este email é um exemplo de phishing de nível fácil. O remetente é genérico e não se parece com um endereço de email oficial de uma rede social. O assunto do email tem urgência exagerada e usa linguagem alarmante. O conteúdo do email contém uma ameaça direta à conta do usuário e um link suspeito para 'verificação'. A formatação é amadora e o tratamento é genérico ('Caro usuário'), sem personalização.",
+        "nivel": "Fácil",
+        "categoria": "Phishing",
+        "links": [
+          "http://bit.ly/1234Link"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.4917218708650451
+      },
+      "execution_time": 73.306587,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 6,
+      "user_context": "Crie um email de phishing básico fingindo ser de uma empresa de telefonia sobre fatura em atraso. Deve ter remetente claramente falso.",
+      "search_query": "Basic phishing techniques impersonating a telecommunications company regarding overdue bills with clearly fake sender",
+      "generation_context": "Create a basic phishing email pretending to be from a telecommunications company about an overdue bill. The sender should be clearly fake.",
+      "generated_email": {
+        "receptor": "user@example.com",
+        "remetente": "noreply@telecom123.com",
+        "assunto": "URGENTE!!! Sua conta está VENCIDA! Ação imediata requerida!",
+        "conteudo": "Caro cliente, \n\nSua conta da Telecom123 está vencida! Evite o corte de serviços pagando agora. \n\nClique aqui para pagar sua conta: http://pay.bill123.com \n\nAtenciosamente, \nTelecom123",
+        "explicacao": "Este email de phishing usa táticas de engenharia social, como urgência e medo, para convencer o receptor a clicar no link malicioso e pagar a conta vencida. O remetente é claramente falso, e o assunto usa urgência exagerada para atrair a atenção do receptor.",
+        "nivel": "fácil",
+        "categoria": "Email Phishing",
+        "links": [
+          "http://pay.bill123.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.15384615384615385,
+        "response_relevancy": 0.4505549559363958
+      },
+      "execution_time": 70.272925,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 7,
+      "user_context": "Crie um email de phishing simples fingindo ser de um banco digital pedindo verificação de identidade. O email deve ter ameaças diretas.",
+      "search_query": "Simple phishing techniques for digital banking identity verification with direct threats",
+      "generation_context": "Create a simple phishing email pretending to be from a digital bank asking for identity verification. The email should contain direct threats.",
+      "generated_email": {
+        "receptor": "john.doe@gmail.com",
+        "remetente": "noreply@digital-bank123.com",
+        "assunto": "URGENT ACTION REQUIRED! Verify Your Account NOW!!!",
+        "conteudo": "Dear Customer,\n\nWe detected suspicious activity on your account and it has been temporarily locked for your safety. You must verify your identity to unlock your account. Failing to do so within 24 hours will result in permanent account closure.\n\nClick here to verify: http://bit.ly/verify123\n\nThanks,\nDigital Bank Team",
+        "explicacao": "This email is a simple phishing attempt. The sender's email is suspicious and generic, not a professional or official bank email. The subject is exaggeratedly urgent and contains all caps and multiple exclamation marks, which is not professional. The content threatens the recipient with account closure, creating fear and urgency. The link is visibly suspicious and is a shortened URL, which doesn't match the bank's official website.",
+        "nivel": "easy",
+        "categoria": "Phishing",
+        "links": [
+          "http://bit.ly/verify123"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.4447323347796579
+      },
+      "execution_time": 75.231031,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 8,
+      "user_context": "Crie um email de phishing básico fingindo ser de uma empresa de entrega sobre pacote retido. Deve ter erros de português evidentes.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 16.611888,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 8192 tokens. However, your messages resulted in 21804 tokens (21736 in the messages, 68 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 9,
+      "user_context": "Crie um email de phishing simples fingindo ser de um provedor de email sobre caixa de entrada cheia. O email deve ser genérico sem personalização.",
+      "search_query": "Simple phishing techniques pretending to be from an email provider about full inbox",
+      "generation_context": "Create a simple phishing email pretending to be from an email provider about a full inbox. The email should be generic without personalization.",
+      "generated_email": {
+        "receptor": "user@example.com",
+        "remetente": "noreply@mailservice123.com",
+        "assunto": "URGENTE!! Seu Email Está Cheio!!",
+        "conteudo": "Caro usuário,\n\nPercebemos que sua caixa de entrada está cheia e você pode perder todos os seus emails importantes!\n\nPor favor, acesse o seguinte link para aumentar o espaço de armazenamento de seu email imediatamente: http://bit.ly/fakeLink\n\nLembramos que, se você não agir imediatamente, perderá todos os seus emails!\n\nAtenciosamente,\nSuporte do Mail Service",
+        "explicacao": "Este email usa a tática de phishing, criando um senso de urgência para pressionar o receptor a agir imediatamente. O remetente é claramente suspeito, com um domínio genérico que não se parece com um provedor de email legítimo. O link é visivelmente suspeito, sendo um URL encurtado que não tem relação com o suposto remetente do email. Além disso, o email não é personalizado, se referindo ao receptor como 'usuário'.",
+        "nivel": "fácil",
+        "categoria": "Phishing",
+        "links": [
+          "http://bit.ly/fakeLink"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.23529411764705882,
+        "response_relevancy": 0.4252137281829686
+      },
+      "execution_time": 77.16423,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "fácil",
+      "sample_index": 10,
+      "user_context": "Crie um email de phishing básico fingindo ser de uma carteira digital sobre transação pendente. Deve ter links encurtados suspeitos.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 16.200747,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 8192 tokens. However, your messages resulted in 21857 tokens (21789 in the messages, 68 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 1,
+      "user_context": "Crie um email de phishing como se fosse do departamento de TI da empresa solicitando que o funcionário João Silva atualize sua senha do sistema. O email deve parecer profissional mas com alguns indicadores de suspeita.",
+      "search_query": "Professional phishing techniques in corporate IT department scenarios with subtle indicators of suspicion",
+      "generation_context": "Create a phishing email as if it's from the company's IT department asking employee João Silva to update his system password. The email should appear professional but with some suspicious indicators.",
+      "generated_email": {
+        "receptor": "João Silva",
+        "remetente": "IT Support <it.support@yourcompany.services>",
+        "assunto": "Atualização necessária do sistema - Ação requerida",
+        "conteudo": "Caro João Silva,\n\nNossa equipe de TI identificou que é necessário uma atualização de senha para seu sistema. Este é um procedimento de rotina para garantir a segurança dos nossos dados. \n\nPor favor, acesse o seguinte link para atualizar sua senha: http://yourcompany-update.systems\n\nAgradecemos sua pronta atenção a este assunto. \n\nAtenciosamente,\nEquipe de Suporte de TI",
+        "explicacao": "Este é um exemplo de um e-mail de phishing de nível médio com personalização básica (nome do receptor). O remetente parece parcialmente convincente, mas o domínio '.services' e '.systems' não são típicos para a maioria das empresas. O assunto é plausível, mas a urgência é moderada. O link parece legítimo à primeira vista, mas é suspeito ao ser examinado mais de perto. A solicitação para atualizar a senha é uma ação indireta comum em ataques de phishing.",
+        "nivel": "médio",
+        "categoria": "phishing",
+        "links": [
+          "http://yourcompany-update.systems"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.10526315789473684,
+        "response_relevancy": 0.595834326787748
+      },
+      "execution_time": 88.460417,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 2,
+      "user_context": "Crie um email de phishing como se fosse do RH da empresa para Ana Costa sobre atualização de dados bancários para depósito do 13º salário. Deve ter aparência corporativa.",
+      "search_query": "Corporate spear phishing techniques for HR-related communication regarding bank account updates for bonus payment",
+      "generation_context": "Create a phishing email as if it's from the HR department to Ana Costa about updating bank details for the deposit of the 13th salary. It should have a corporate appearance.",
+      "generated_email": {
+        "receptor": "Ana Costa",
+        "remetente": "recursos.humanos@empresa.com",
+        "assunto": "Atualização de Informações Bancárias para o 13º Salário",
+        "conteudo": "Prezada Ana Costa,\n\nEsperamos que esteja bem. Informamos que, devido a uma atualização no nosso sistema de RH, precisamos que confirme seus dados bancários para garantir o depósito correto do seu 13º salário.\n\nPor favor, clique no link abaixo para confirmar suas informações:\n\nhttp://www.empresa.com/atualize-seus-dados\n\nAgradecemos sua compreensão e cooperação.\n\nAtenciosamente,\n\nEquipe de Recursos Humanos",
+        "explicacao": "Este é um exemplo de um email de phishing de nível médio. O remetente parece legítimo, o assunto é relevante e plausível, e o conteúdo é profissional e personalizado. No entanto, a solicitação para confirmar dados bancários através de um link é suspeita e um indicador comum de phishing.",
+        "nivel": "Médio",
+        "categoria": "Spear Phishing",
+        "links": [
+          "http://www.empresa.com/atualize-seus-dados"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.11764705882352941,
+        "response_relevancy": 0.5597169773506595
+      },
+      "execution_time": 77.453004,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 3,
+      "user_context": "Crie um email de phishing como se fosse do suporte técnico da Microsoft para Carlos Mendes sobre licença do Office expirando. Deve parecer legítimo com sutis indicadores.",
+      "search_query": "Techniques for creating legitimate-looking phishing emails impersonating Microsoft technical support regarding Office license expiration",
+      "generation_context": "Create a phishing email as if it's from Microsoft's technical support for Carlos Mendes about his Office license expiring. It should appear legitimate with subtle indicators.",
+      "generated_email": {
+        "receptor": "Carlos Mendes",
+        "remetente": "Microsoft Tech Support <support@microsfot.com>",
+        "assunto": "Aviso Importante: Sua licença do Microsoft Office está prestes a expirar",
+        "conteudo": "Caro Carlos Mendes,\n\nEsperamos que esteja aproveitando os benefícios do Microsoft Office. Infelizmente, notamos que sua licença está prestes a expirar em 7 dias.\n\nPara evitar interrupções no serviço, solicitamos que renove sua licença clicando no link abaixo:\n\nRenove agora: www.microsfot.com/renew\n\nLembre-se, se sua licença expirar, você perderá o acesso a todos os seus documentos e dados importantes armazenados em nossos serviços.\n\nAgradecemos sua atenção imediata a este assunto.\n\nAtenciosamente,\nMicrosoft Tech Support",
+        "explicacao": "Este email de phishing se passa por um comunicado legítimo da Microsoft. O remetente parece autêntico à primeira vista, mas contém um erro sutil em 'microsfot' em vez de 'microsoft'. O assunto é plausível e a linguagem usada é profissional, sem erros gramaticais ou ortográficos. O email é personalizado com o nome do destinatário para aumentar sua credibilidade. A urgência é moderada, com uma justificativa aparente (expiração da licença). O link parece legítimo à primeira vista, mas novamente contém o erro sutil no domínio. A solicitação de ação é indireta, pedindo ao destinatário para renovar a licença, o que provavelmente levaria a fornecer informações pessoais ou financeiras.",
+        "nivel": "medium",
+        "categoria": "spear phishing",
+        "links": [
+          "www.microsfot.com/renew"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 0.5,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.636764421415617
+      },
+      "execution_time": 88.362105,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 4,
+      "user_context": "Crie um email de phishing como se fosse do departamento financeiro para Roberto Lima sobre aprovação de reembolso pendente. O email deve ter formato empresarial.",
+      "search_query": "Techniques for creating a phishing email impersonating a financial department regarding pending reimbursement approval",
+      "generation_context": "Create a phishing email as if it's from the financial department to Roberto Lima about pending reimbursement approval. The email should have a business format.",
+      "generated_email": {
+        "receptor": "roberto.lima@empresa.com",
+        "remetente": "financeiro@empresafinanceira.com",
+        "assunto": "Reembolso Pendente - Ação Necessária",
+        "conteudo": "Caro Roberto Lima,\n\nEspero que este email o encontre bem. Estamos atualizando nossos registros financeiros e notamos que você tem um reembolso pendente referente a despesas de viagem. Para prosseguirmos com o processamento do seu reembolso, precisamos que você confirme algumas informações.\n\nPor favor, acesse nosso portal de reembolsos através do link abaixo para verificar e confirmar seus detalhes.\n\nLink: http://empresa-financeira.com/verify\n\nEste é um assunto urgente e pedimos que você complete esta tarefa dentro de 24 horas para evitar atrasos no processamento do seu reembolso.\n\nObrigado pela sua atenção imediata a este assunto.\n\nAtenciosamente,\nDepartamento Financeiro",
+        "explicacao": "Este email de phishing simula uma comunicação do departamento financeiro sobre um reembolso pendente. Utiliza a tática de engenharia social, criando um senso de urgência para que o alvo tome uma ação imediata. O email é personalizado com o nome do destinatário, tornando-o mais convincente. Além disso, o link fornecido parece legítimo à primeira vista, mas é um link de phishing.",
+        "nivel": "medio",
+        "categoria": "spear phishing",
+        "links": [
+          "http://empresa-financeira.com/verify"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.6340543200977687
+      },
+      "execution_time": 78.221215,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 5,
+      "user_context": "Crie um email de phishing como se fosse do LinkedIn para Paula Ferreira sobre nova vaga compatível com seu perfil. Deve ter design similar ao original.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 11.363882,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 8192 tokens. However, your messages resulted in 31386 tokens (31318 in the messages, 68 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 6,
+      "user_context": "Crie um email de phishing como se fosse do Dropbox para Marcos Oliveira sobre compartilhamento de arquivo importante. Deve ter branding parcialmente convincente.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 10.696037,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 8192 tokens. However, your messages resulted in 31379 tokens (31311 in the messages, 68 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 7,
+      "user_context": "Crie um email de phishing como se fosse do departamento jurídico para Fernanda Alves sobre documento para assinatura eletrônica. Deve ter tom profissional.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 21.474754,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 8192 tokens. However, your messages resulted in 11933 tokens (11865 in the messages, 68 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 8,
+      "user_context": "Crie um email de phishing como se fosse do Google Workspace para Ricardo Santos sobre verificação de segurança obrigatória. Deve ter aparência autêntica.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 5.154377,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 8192 tokens. However, your messages resulted in 31377 tokens (31309 in the messages, 68 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 9,
+      "user_context": "Crie um email de phishing como se fosse do fornecedor habitual para Juliana Pereira sobre nova forma de pagamento. Deve usar informações parcialmente corretas.",
+      "search_query": "Advanced spear phishing techniques using supplier impersonation and partially correct information to create credibility.",
+      "generation_context": "Create a phishing email as if it's from the regular supplier for Juliana Pereira about a new payment method. It should use partially correct information.",
+      "generated_email": {
+        "receptor": "Juliana Pereira",
+        "remetente": "support@regularsupplier.net",
+        "assunto": "Novo Método de Pagamento Disponível",
+        "conteudo": "Olá Juliana, \n\nEsperamos que esteja bem. \n\nGostaríamos de informar que introduzimos uma nova opção de pagamento. Agora você pode fazer pagamentos usando o novo sistema de pagamento eletrônico. \n\nPara atualizar sua forma de pagamento, por favor, clique no link abaixo e siga as instruções. \n\nwww.regularsupplier-payment.com \n\nSe você tiver alguma dúvida, não hesite em nos contatar. \n\nAtenciosamente, \nSupport Team",
+        "explicacao": "O e-mail criado é um exemplo de phishing de nível médio. Ele usa um remetente parcialmente convincente com uma pequena inconsistência (o domínio .net em vez de .com), um assunto plausível, uma urgência moderada e um link que parece legítimo à primeira vista. O conteúdo do e-mail é profissional e usa o nome do destinatário para personalização básica. Ele mistura informações verdadeiras com falsas e solicita indiretamente a ação de clicar no link para atualizar as informações de pagamento.",
+        "nivel": "médio",
+        "categoria": "Impersonação, Engenharia Social, E-mails Falsos, Websites Falsos",
+        "links": [
+          "www.regularsupplier-payment.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.3602021205412011
+      },
+      "execution_time": 64.109946,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "médio",
+      "sample_index": 10,
+      "user_context": "Crie um email de phishing como se fosse do banco corporativo para Lucas Martins sobre nova política de segurança. Deve ter elementos visuais profissionais.",
+      "search_query": "Professional visual elements in corporate bank phishing emails and new security policy",
+      "generation_context": "Create a phishing email as if it's from the corporate bank for Lucas Martins about the new security policy. It should have professional visual elements.",
+      "generated_email": {
+        "receptor": "Lucas Martins",
+        "remetente": "security@yourbankcorp.com",
+        "assunto": "Nova Política de Segurança Corporativa - Ação Necessária",
+        "conteudo": "Prezado Lucas Martins,\n\nEsperamos que esteja bem.\n\nComo parte de nossos esforços contínuos para aprimorar a segurança de nossos clientes, estamos implementando uma nova Política de Segurança Corporativa. Esta política afeta todos os nossos clientes e requer que você acesse sua conta e confirme suas informações de contato. Isso garantirá que possamos contatá-lo diretamente com atualizações importantes no futuro.\n\nPor favor, siga este link para confirmar suas informações: www.yourbankcorp-security.com\n\nAgradecemos sua cooperação e compreensão. Se você tiver alguma dúvida, por favor, não hesite em nos contatar.\n\nAtenciosamente,\nEquipe de Segurança da YourBankCorp",
+        "explicacao": "Este é um exemplo de um e-mail de phishing de nível médio que se passa por um banco corporativo. Ele usa uma mistura de informações verdadeiras e falsas para parecer mais convincente. O remetente parece legítimo à primeira vista, mas é ligeiramente diferente do email oficial do banco. O assunto é plausível e o conteúdo do email é profissionalmente formatado e personalizado para o destinatário, Lucas Martins. O link para 'confirmar informações' é uma URL de phishing que imita o domínio do banco real. A solicitação de ação é indireta, pedindo que o destinatário 'confirme suas informações'.",
+        "nivel": "médio",
+        "categoria": "spear phishing",
+        "links": [
+          "www.yourbankcorp-security.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.21739130434782608,
+        "response_relevancy": 0.5342185749074687
+      },
+      "execution_time": 82.83119,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 1,
+      "user_context": "Crie um email de spear phishing altamente sofisticado como se fosse da diretora financeira Maria Santos para o gerente de contas Pedro Oliveira, sobre uma transferência urgente relacionada ao Projeto Expansão 2025. O email deve ser praticamente indistinguível de uma comunicação legítima.",
+      "search_query": "Advanced spear phishing techniques using social engineering and referencing internal projects to create urgency.",
+      "generation_context": "Create a sophisticated spear phishing email as if it's from the CFO Maria Santos to the account manager Pedro Oliveira, about an urgent transfer related to the Expansion Project 2025. The email should be nearly indistinguishable from a legitimate communication.",
+      "generated_email": {
+        "receptor": "Pedro Oliveira <pedro.oliveira@empresa.com.br>",
+        "remetente": "Maria Santos <maria.santos@empresa.com.br>",
+        "assunto": "Transferência Urgente - Projeto de Expansão 2025",
+        "conteudo": "Olá Pedro,\n\nEspero que esteja bem. Estou trabalhando no fechamento do Projeto de Expansão 2025 e descobri que precisamos fazer uma transferência urgente para garantir o contrato com nosso novo parceiro, a XYZ Corp. Devido a um problema técnico na minha conta do banco, não consigo fazer a transferência hoje.\n\nPor isso, preciso de sua ajuda para realizar a transferência. Os detalhes estão no nosso portal interno de finanças (https://empresa-financeiro.com/transferencia). Por favor, faça isso assim que possível e me avise quando estiver concluído.\n\nAtenciosamente,\nMaria Santos\nCFO",
+        "explicacao": "Este é um exemplo de spear phishing altamente sofisticado que utiliza técnicas de engenharia social e clone phishing. O atacante se passa por Maria Santos, CFO da empresa, e solicita a Pedro Oliveira que realize uma transferência urgente. O e-mail é cuidadosamente escrito para parecer legítimo e inclui o nome e o cargo de Pedro, além de detalhes sobre o Projeto de Expansão 2025, o que aumenta a credibilidade do e-mail. O link que leva a um site falso é quase idêntico ao URL real da empresa e pode facilmente enganar a vítima.",
+        "nivel": "Difícil",
+        "categoria": "Spear Phishing, Engenharia Social, Clone Phishing",
+        "links": [
+          "https://empresa-financeiro.com/transferencia"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.4568386274051331
+      },
+      "execution_time": 80.816745,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 2,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse do CEO Antonio Rodrigues para a controller Beatriz Lima sobre aprovação emergencial de budget para aquisição estratégica. Deve ter contexto empresarial realista.",
+      "search_query": "Sophisticated spear phishing techniques in a business context, impersonating CEO for emergency budget approval for strategic acquisition.",
+      "generation_context": "Create a sophisticated spear phishing email as if it's from CEO Antonio Rodrigues to controller Beatriz Lima about emergency budget approval for strategic acquisition. The email should have a realistic business context.",
+      "generated_email": {
+        "receptor": "Beatriz Lima",
+        "remetente": "Antonio Rodrigues <antonio.rodrigues@company.com>",
+        "assunto": "Approval Needed for Strategic Acquisition Budget",
+        "conteudo": "Dear Beatriz,\n\nI hope this email finds you well. I wanted to bring a matter of utmost importance to your immediate attention. We have a unique opportunity to acquire a strategic asset which could significantly enhance our market position.\n\nHowever, this opportunity is time-sensitive and requires emergency budget approval. Given the nature of this acquisition, it is vital that we act swiftly and discreetly.\n\nI have attached a brief overview of the acquisition details and the proposed budget in the following secured document, which you can view by using your standard credentials: [company-authentication.com]\n\nCan I please request you to review and approve the budget by the end of the day?\n\nYour prompt attention to this matter will be greatly appreciated.\n\nBest Regards,\nAntonio Rodrigues\nCEO",
+        "explicacao": "This email impersonates the CEO, Antonio Rodrigues, creating a sense of urgency and authority. It targets the controller, Beatriz Lima, in a spear phishing attempt, using a business scenario to make it seem legitimate. The link to the 'secured document' is actually a phishing attempt, asking Beatriz to input her credentials.",
+        "nivel": "difficult",
+        "categoria": "spear phishing",
+        "links": [
+          "company-authentication.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.5496510514453489
+      },
+      "execution_time": 65.199407,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 3,
+      "user_context": "Crie um email de spear phishing avançado como se fosse do diretor de operações Felipe Souza para o gerente de compras Eduardo Nunes sobre urgência em contrato com fornecedor internacional. Deve ter detalhes específicos convincentes.",
+      "search_query": "Advanced spear phishing techniques using social engineering and referencing urgent international contracts.",
+      "generation_context": "Create an advanced spear phishing email as if it's from the COO Felipe Souza to the purchasing manager Eduardo Nunes about an urgent contract with an international supplier. It should contain convincing specific details.",
+      "generated_email": {
+        "receptor": "Eduardo Nunes",
+        "remetente": "Felipe Souza <fsouza@yourcompany.com>",
+        "assunto": "Urgência: Contrato com fornecedor internacional",
+        "conteudo": "Olá Eduardo,\n\nEspero que esteja bem. Fui informado sobre um contrato emergencial com um fornecedor internacional. Esse fornecedor é crucial para a conclusão do nosso projeto atual e não podemos nos dar ao luxo de atrasar.\n\nPor favor, acesse o documento do contrato em anexo e revise-o o mais rápido possível. Precisamos que você confirme os detalhes para que possamos avançar com o pagamento.\n\nAqui está o link para o documento: [www.yourcompany-docs.com/contract-review]\n\nAgradeço sua atenção imediata a este assunto.\n\nAtenciosamente,\nFelipe Souza\nCOO",
+        "explicacao": "Este é um exemplo avançado de spear phishing. O remetente é convincente e a situação é plausível. O conteúdo do email é personalizado e relevante para o receptor. A urgência é sutil e bem justificada. O link parece legítimo, mas é uma versão maliciosa.",
+        "nivel": "Difícil",
+        "categoria": "Spear Phishing",
+        "links": [
+          "www.yourcompany-docs.com/contract-review"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.3349438768942556
+      },
+      "execution_time": 62.042992,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 4,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse da head de RH Carolina Mendes para o analista financeiro Gustavo Almeida sobre bônus confidencial que requer dados bancários atualizados. Deve explorar autoridade.",
+      "search_query": "Sophisticated spear phishing techniques exploiting authority and requiring updated banking information",
+      "generation_context": "Create a sophisticated spear phishing email as if it's from the HR head Carolina Mendes to the financial analyst Gustavo Almeida about a confidential bonus that requires updated banking details.",
+      "generated_email": {
+        "receptor": "Gustavo Almeida",
+        "remetente": "Carolina Mendes <carolina.mendes@hrcompany.com>",
+        "assunto": "Confidential Bonus Payout: Immediate Action Required",
+        "conteudo": "Olá Gustavo,\n\nEspero que esteja bem. Estou escrevendo para informá-lo sobre um bônus confidencial e exclusivo que você recebeu devido ao seu excelente desempenho no último trimestre.\n\nPara garantir que o bônus seja pago corretamente, precisamos que você atualize seus detalhes bancários em nosso portal de RH. Esse processo é urgente, pois estamos finalizando o pagamento de bônus nesta semana.\n\nPor favor, acesse o portal através do link abaixo e atualize suas informações o mais rápido possível.\n\n[Clique aqui para atualizar os detalhes bancários](http://hrcompany-portal.com/update)\n\nLembre-se de que este é um assunto confidencial e não deve ser discutido com outros colegas.\n\nObrigada pela sua atenção imediata a este assunto.\n\nAtenciosamente,\nCarolina Mendes\nChefe de RH",
+        "explicacao": "Este é um exemplo de um e-mail de phishing de alto nível. Ele simula um e-mail da chefe de RH, Carolina Mendes, e cria uma sensação de urgência e incentivo para que Gustavo atualize seus detalhes bancários em um portal falso. O e-mail também usa a tática de confidencialidade para desencorajar Gustavo de discutir o assunto com outros e, assim, potencialmente descobrir o golpe.",
+        "nivel": "Difícil",
+        "categoria": "Spear Phishing",
+        "links": [
+          "http://hrcompany-portal.com/update"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.5068083932082367
+      },
+      "execution_time": 66.140336,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 5,
+      "user_context": "Crie um email de spear phishing avançado como se fosse do CTO Ricardo Ferreira para a desenvolvedora Mariana Costa sobre acesso urgente ao repositório do cliente VIP. Deve ter terminologia técnica correta.",
+      "search_query": "Advanced spear phishing techniques using technical terminology and referencing urgent access to VIP client repositories.",
+      "generation_context": "Create an advanced spear phishing email as if it's from CTO Ricardo Ferreira to developer Mariana Costa about urgent access to the VIP client's repository.",
+      "generated_email": {
+        "receptor": "Mariana Costa",
+        "remetente": "Ricardo Ferreira <ricardo.ferreira@techenhanced.com>",
+        "assunto": "Urgent Access Required to VIP Client Repository",
+        "conteudo": "Dear Mariana,\n\nI hope you are doing well. As you are aware, we have been working closely with our VIP client on their new project. They have recently updated some of the critical data in the repository which needs to be reviewed urgently.\n\nI am currently in a meeting and unable to access the repository. Could you please help me to review the changes? Here is the link to the repository: \n\nhttp://techenhanced-clientportal.com/repo-access\n\nYour prompt action would be highly appreciated. Please let me know once you've done it.\n\nBest,\nRicardo Ferreira\nCTO, Tech Enhanced",
+        "explicacao": "This is a spear phishing attempt by impersonating the CTO of the company, Ricardo Ferreira. The attacker is using a high level of personalization and a sense of urgency to trick the receiver, Mariana, into clicking the malicious link. The link provided is a typosquatting URL, which looks very similar to the original company's domain.",
+        "nivel": "difficult",
+        "categoria": "spear phishing",
+        "links": [
+          "http://techenhanced-clientportal.com/repo-access"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.5225899466292884
+      },
+      "execution_time": 85.271798,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 6,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse do partner do escritório de advocacia para o cliente corporativo sobre acordo judicial confidencial. Deve ter tom formal adequado.",
+      "search_query": "Sophisticated spear phishing techniques for legal firms and confidential judicial agreements",
+      "generation_context": "Create a sophisticated spear phishing email as if it's from the law firm partner to the corporate client about a confidential legal agreement. It should have an appropriate formal tone.",
+      "generated_email": {
+        "receptor": "john.doe@clientcorp.com",
+        "remetente": "jane.smith@lawfirm-partners.com",
+        "assunto": "Confidential Legal Agreement Due for Review",
+        "conteudo": "Dear John Doe, \n\nAs you may be aware, we are in the final stages of finalizing the legal agreement for our upcoming merger. There have been a few minor changes in the contract that we need your immediate attention on. \n\nWe understand that you are very busy, so we have made the process as easy as possible for you. You can review and sign the document digitally using our new secure online platform. \n\nPlease follow this link [www.lawfirm-partners.com/secure-docs/sign] to access the document. Your secure access code is 123456. \n\nWe appreciate your prompt attention to this matter. \n\nBest Regards, \n\nJane Smith \nSenior Partner \nLaw Firm & Partners",
+        "explicacao": "This is a spear phishing email disguised as a formal communication from a law firm partner to a corporate client. It uses a highly convincing sender address, a relevant subject, and a high level of personalization in the email body. The email also includes a link that appears to belong to the law firm's domain, thus making it difficult to identify as phishing. The call-to-action is subtle, requesting the recipient to review and sign a document on a 'secure' platform.",
+        "nivel": "difficult",
+        "categoria": "spear phishing",
+        "links": [
+          "www.lawfirm-partners.com/secure-docs/sign"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.3871942608134196
+      },
+      "execution_time": 63.465731,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 7,
+      "user_context": "Crie um email de spear phishing avançado como se fosse do gerente de banco private para cliente de alta renda sobre oportunidade exclusiva de investimento. Deve ter personalização avançada.",
+      "search_query": "Advanced spear phishing techniques for high-income individuals with personalized investment opportunities",
+      "generation_context": "Create an advanced spear phishing email as if it's from a private bank manager to a high-income client about an exclusive investment opportunity. The email should have advanced personalization.",
+      "generated_email": {
+        "receptor": "John Doe",
+        "remetente": "Richard Smith <richard.smith@yourprivatebank.com>",
+        "assunto": "Exclusive Investment Opportunity - Limited Seats",
+        "conteudo": "Dear John Doe,\n\nI hope this email finds you well. I'm reaching out to share an exciting new investment opportunity that has become available exclusively to our high-net-worth clients. This opportunity is related to an innovative tech startup, which is expected to yield significant returns.\n\nTo maintain exclusivity, we are only extending this opportunity to a select few of our clients. If you're interested, I would recommend acting quickly as the slots are filling up. You can find more details and reserve your spot through the link below:\n\n[www.yourprivatebank.com/exclusive-investment](https://www.yourprivatebank.com/)\n\nAs always, please feel free to reach out to me directly if you have any questions or if there's anything else I can assist you with.\n\nBest Regards,\nRichard Smith\nPrivate Bank Manager\nYour Private Bank\nPhone: +1 XXX XXX XXXX",
+        "explicacao": "This email uses advanced spear phishing techniques, targeting a high-income client with a personalized and relevant subject. The email sender appears to be from a trusted source, the client's private bank manager. The email creates a sense of urgency and exclusivity to manipulate the client into taking immediate action, and includes a link that appears to be safe, but actually directs to a fake website.",
+        "nivel": "difficult",
+        "categoria": "spear phishing",
+        "links": [
+          "www.yourprivatebank.com/exclusive-investment"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.0
+      },
+      "execution_time": 77.000654,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 8,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse do diretor comercial Henrique Bastos para o vendedor sênior Amanda Reis sobre comissão extraordinária do trimestre. Deve ter contexto temporal relevante.",
+      "search_query": "Sophisticated spear phishing techniques using social engineering and referencing extraordinary quarterly commission to create urgency.",
+      "generation_context": "Create a sophisticated spear phishing email as if it's from the commercial director Henrique Bastos to the senior salesperson Amanda Reis about the extraordinary quarterly commission. It should have relevant temporal context.",
+      "generated_email": {
+        "receptor": "Amanda Reis",
+        "remetente": "Henrique Bastos",
+        "assunto": "Revisão Extraordinária da Comissão Trimestral",
+        "conteudo": "Olá Amanda, \n\nEspero que esteja bem. Estive revisando os números do nosso último trimestre e notei que houve um erro de cálculo na sua comissão. Parece que você é elegível para uma comissão extraordinária devido ao seu excelente desempenho. \n\nPara corrigir isso, precisamos que você verifique seus detalhes de pagamento no nosso portal. Por favor, use o link abaixo para acessar sua conta e confirmar seus detalhes. \n\n[www.empresax-pagamento.com]\n\nPeço desculpas por qualquer inconveniente e agradeço sua atenção imediata a este assunto. \n\nAtenciosamente, \n\nHenrique Bastos \nDiretor Comercial",
+        "explicacao": "Este email é um exemplo de spear phishing de alto nível. Ele é personalizado para o receptor e parece vir de um remetente legítimo, usando um assunto relevante e oportuno para criar um senso de urgência. O link fornecido parece legítimo, mas na verdade redireciona o usuário para um site malicioso onde suas informações de login podem ser roubadas.",
+        "nivel": "difícil",
+        "categoria": "Spear Phishing",
+        "links": [
+          "www.empresax-pagamento.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.6666666666666666,
+        "response_relevancy": 0.517912974501325
+      },
+      "execution_time": 62.447346,
+      "error": null
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 9,
+      "user_context": "Crie um email de spear phishing avançado como se fosse do auditor externo para o controller sobre documentação urgente para fechamento fiscal. Deve explorar compliance.",
+      "search_query": null,
+      "generation_context": null,
+      "generated_email": {},
+      "ragas_scores": {},
+      "execution_time": 20.007784,
+      "error": "Error code: 400 - {'error': {'message': \"This model's maximum context length is 8192 tokens. However, your messages resulted in 12445 tokens (12377 in the messages, 68 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}}"
+    },
+    {
+      "condition": "with_rag",
+      "difficulty": "difícil",
+      "sample_index": 10,
+      "user_context": "Crie um email de spear phishing sofisticado como se fosse do board member para o CFO sobre due diligence confidencial de M&A. Deve ter linguagem executiva autêntica.",
+      "search_query": "Sophisticated spear phishing techniques in the context of M&A due diligence with authentic executive language",
+      "generation_context": "Create a sophisticated spear phishing email as if it's from a board member to the CFO about confidential M&A due diligence. It should have authentic executive language.",
+      "generated_email": {
+        "receptor": "CFO",
+        "remetente": "john.doe@executiveboard.com",
+        "assunto": "Confidential M&A Due Diligence",
+        "conteudo": "Prezado CFO,\n\nEspero que esteja bem. Recentemente, em nossa reunião de diretoria, discutimos a potencial aquisição de uma empresa emergente em nosso setor. Esta é uma oportunidade única e, como CFO, sua contribuição será inestimável.\n\nEu preparei um documento com detalhes confidenciais para revisão. Por favor, acesse-o aqui: www.executiveboard-due-diligence.com.\n\nAgradeço sua atenção imediata a esta matéria, pois precisamos tomar uma decisão informada o mais rápido possível.\n\nAtenciosamente,\nJohn Doe\nChairman of the Board",
+        "explicacao": "Este é um exemplo de um e-mail de spear phishing direcionado a um CFO. O remetente parece ser o presidente do conselho, o que pode induzir o destinatário a acreditar na autenticidade do e-mail. Além disso, o assunto é relevante para o papel do CFO. O link para um site falso é apresentado de forma sutil, sem pressão excessiva ou urgência, o que pode tornar o e-mail mais convincente.",
+        "nivel": "Difícil",
+        "categoria": "Phishing",
+        "links": [
+          "www.executiveboard-due-diligence.com"
+        ]
+      },
+      "ragas_scores": {
+        "context_relevance": 1.0,
+        "faithfulness": 0.0,
+        "response_relevancy": 0.38592694559818286
+      },
+      "execution_time": 75.848261,
+      "error": null
+    }
+  ]
+}
