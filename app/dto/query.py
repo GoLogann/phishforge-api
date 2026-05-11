@@ -1,8 +1,9 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
 
 class QueryRequest(BaseModel):
     difficulty: str
-    user_context: str
+    user_context: str = Field(alias="context")
 
     class Config:
         populate_by_name = True
