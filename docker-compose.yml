@@ -53,6 +53,47 @@ services:
       phishforge-postgresql:
         condition: service_healthy
 
+  phishforge-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: phishforge-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      QDRANT_URL: http://phishforge-qdrant:6333
+      DB_HOST: phishforge-postgresql
+      DB_PORT: 5432
+      DB_USER: phishforge
+      DB_PASSWORD: phishforge
+      DB_NAME: phishforge
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    networks:
+      - phishforge_network
+    depends_on:
+      phishforge-postgresql:
+        condition: service_healthy
+      phishforge-qdrant:
+        condition: service_started
+      phishforge-flyway:
+        condition: service_completed_successfully
+
+  phishforge-frontend:
+    build:
+      context: ../phishforge-frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:8000
+    container_name: phishforge-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - phishforge_network
+    depends_on:
+      - phishforge-api
+
 networks:
   phishforge_network:
     name: phishforge_network
