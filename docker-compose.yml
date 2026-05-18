@@ -68,7 +68,7 @@ services:
       DB_USER: phishforge
       DB_PASSWORD: phishforge
       DB_NAME: phishforge
-      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_API_KEY: OPENAI_API_KEY=${OPENAI_API_KEY}
     networks:
       - phishforge_network
     depends_on:

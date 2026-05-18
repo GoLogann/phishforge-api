@@ -92,6 +92,7 @@ async def generate(
             context=generation_context,
             relevant_docs=fused_context,
         )
+        phishing_example.nivel = request.difficulty
     except Exception as e:
         raise HTTPException(
             status_code=500, detail=f"Error generating response: {str(e)}"
@@ -125,8 +126,8 @@ async def generate_batch(
         )
     if total <= 0:
         raise HTTPException(status_code=400, detail="O total deve ser maior que 0")
-    if total > 10:
-        raise HTTPException(status_code=400, detail="O total máximo permitido é 10")
+    if total > 100:
+        raise HTTPException(status_code=400, detail="O total máximo permitido é 100")
 
     try:
         relevant_docs = retriever.vector_store.query(
@@ -152,6 +153,7 @@ async def generate_batch(
                 phishing_example = await response_generator.generate_response(
                     difficulty=difficulty, context=context, relevant_docs=docs_text
                 )
+                phishing_example.nivel = difficulty
                 email_id = await phishing_service.create_email(phishing_example)
                 result = phishing_example.dict()
                 result["id"] = str(email_id)
