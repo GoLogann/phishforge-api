@@ -9,36 +9,25 @@ class PhishingEmailService:
         self.repository = repository
         self.analytics_repository = analytics_repository
         
-        # Mapeamento de níveis completo
         self.level_mapping = {
-            'easy': 'baixo',
-            'medium': 'medio', 
-            'hard': 'alto',
-            'critical': 'critico',
-            # Valores em português com e sem acentos
-            'baixo': 'baixo',
+            'facil': 'facil',
             'medio': 'medio',
-            'alto': 'alto', 
-            'critico': 'critico',
-            # Valores com acentos/capitalizados
-            'fácil': 'baixo',
+            'dificil': 'dificil',
+            'fácil': 'facil',
             'médio': 'medio',
-            'difícil': 'alto',
-            'crítico': 'critico',
-            'Fácil': 'baixo',
-            'Médio': 'medio', 
-            'Difícil': 'alto',
-            'Crítico': 'critico'
+            'difícil': 'dificil',
+            'easy': 'facil',
+            'medium': 'medio',
+            'hard': 'dificil',
         }
-    
+
     async def create_email(self, email: PhishingEmail) -> UUID:
         """Cria um novo email de phishing e sua análise"""
-        # Normaliza o nível para português (case-insensitive)
-        email.nivel = self.level_mapping.get(email.nivel, email.nivel.lower())
-        if email.nivel not in ['baixo', 'medio', 'alto', 'critico']:
-            # Fallback se não encontrar mapeamento
+        normalized = self.level_mapping.get(email.nivel.lower().strip())
+        if normalized is None:
             print(f"Warning: Unknown level '{email.nivel}', defaulting to 'medio'")
-            email.nivel = 'medio'
+            normalized = 'medio'
+        email.nivel = normalized
         
         # Salva o email
         email_id = await self.repository.create(email)
@@ -58,8 +47,7 @@ class PhishingEmailService:
     
     async def get_emails_by_nivel(self, nivel: str, limit: int = 50) -> List[PhishingEmail]:
         """Busca emails por nível"""
-        # Normaliza o nível para português antes da busca
-        nivel_normalizado = self.level_mapping.get(nivel.lower(), nivel)
+        nivel_normalizado = self.level_mapping.get(nivel.lower().strip(), nivel)
         return await self.repository.get_by_nivel(nivel_normalizado, limit)
     
     async def search_emails(self, search_term: str, limit: int = 50) -> List[PhishingEmail]:
